@@ -1,671 +1,1252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>for Raysha, always.</title>
+  <title>Raysha's House</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- POLKADOT DECORATION -->
+  <!-- POLKADOT BACKGROUND -->
+  <div class="dot-layer"></div>
 
-  <div class="dot dot-one"></div>
-  <div class="dot dot-two"></div>
-  <div class="dot dot-three"></div>
-  <div class="dot dot-four"></div>
-  <div class="dot dot-five"></div>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="mini-brand">RAYSHA'S HOUSE</div>
 
-  <div class="tiny-star star-one">✦</div>
-  <div class="tiny-star star-two">✧</div>
-  <div class="tiny-star star-three">✦</div>
-
-
-  <!-- MUSIC -->
-
-  <div class="music-player">
-
-    <div class="music-disc">♪</div>
-
-    <div class="music-text">
-      <span>for this little place</span>
-      <small>press play</small>
-    </div>
-
-    <button id="musicBtn">▶</button>
-
-    <audio id="music">
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
-
-  </div>
+    <button id="lightsBtn" class="tiny-btn">
+      lights
+    </button>
+  </header>
 
 
-  <!-- NAVIGATION -->
+  <main>
 
-  <nav>
+    <!-- =========================
+         FRONT DOOR / HERO
+    ========================== -->
 
-    <div class="logo">
-      R.
-    </div>
+    <section class="hero house-section" id="door">
 
-    <div class="nav-links">
-      <a href="#inside">inside</a>
-      <a href="#dreams">dreams</a>
-      <a href="#architecture">future</a>
-      <a href="#letter">letter</a>
-    </div>
+      <div class="hero-copy reveal">
 
-  </nav>
-
-
-  <!-- HERO -->
-
-  <section class="hero" id="home">
-
-    <div class="hero-text">
-
-      <p class="small-label">
-        a tiny corner of the internet
-      </p>
-
-      <h1>
-        hey,<br>
-        <span>Raysha.</span>
-      </h1>
-
-      <p class="hero-line">
-        I made you a little place to keep
-        some things that shouldn't get lost.
-      </p>
-
-      <a href="#inside" class="enter-button">
-        come inside →
-      </a>
-
-    </div>
-
-
-    <!-- LITTLE HOUSE -->
-
-    <div class="hero-house">
-
-      <div class="moon"></div>
-
-      <div class="house">
-
-        <div class="house-roof"></div>
-
-        <div class="house-wall">
-
-          <div class="house-window left-window">
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="house-door">
-            <div class="door-handle"></div>
-          </div>
-
-          <div class="house-window right-window">
-            <span></span>
-            <span></span>
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="ground"></div>
-
-    </div>
-
-  </section>
-
-
-  <!-- INTRO -->
-
-  <section class="inside section" id="inside">
-
-    <div class="section-number">
-      01 / inside
-    </div>
-
-    <div class="intro-grid">
-
-      <div>
-
-        <p class="little-heading">
-          dear Raysha,
+        <p class="eyebrow">
+          a little place made for you
         </p>
 
-        <h2>
-          You can leave<br>
-          your shoes by<br>
-          the door.
-        </h2>
+        <h1>
+          Raysha's<br>
+          <em>House</em>
+        </h1>
 
-      </div>
-
-      <div class="intro-copy">
-
-        <p>
-          There are some memories on the table,
-          a few unfinished thoughts on the wall,
-          and somewhere upstairs,
-          a future that is still being drawn.
+        <p class="lead">
+          Please come in.<br>
+          There are a few things I wanted you to find here.
         </p>
 
-        <p>
-          Stay for a while.
-          Nothing here needs to be perfect.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- SCRAPBOOK / THINGS IN HER HEAD -->
-
-  <section class="scrapbook section" id="dreams">
-
-    <div class="section-number">
-      02 / currently living in your head
-    </div>
-
-    <div class="scrapbook-title">
-
-      <p class="little-heading">
-        a completely unofficial list
-      </p>
-
-      <h2>
-        things currently<br>
-        living in your head.
-      </h2>
-
-    </div>
-
-
-    <div class="notes-board">
-
-      <div class="note note-yellow">
-
-        <small>01</small>
-
-        <h3>
-          architecture
-        </h3>
-
-        <p>
-          obviously.
-        </p>
-
-      </div>
-
-
-      <div class="note note-blue">
-
-        <small>02</small>
-
-        <h3>
-          books
-        </h3>
-
-        <p>
-          probably too many.
-        </p>
-
-      </div>
-
-
-      <div class="note note-pink">
-
-        <small>03</small>
-
-        <h3>
-          writing
-        </h3>
-
-        <p>
-          please never stop.
-        </p>
-
-      </div>
-
-
-      <div class="note note-cream">
-
-        <small>04</small>
-
-        <h3>
-          UI
-        </h3>
-
-        <p>
-          we're getting there.
-        </p>
-
-      </div>
-
-
-      <div class="note note-navy">
-
-        <small>05</small>
-
-        <h3>
-          a good life
-        </h3>
-
-        <p>
-          the important one.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- LITERATURE -->
-
-  <section class="literature section">
-
-    <div class="section-number">
-      03 / words
-    </div>
-
-    <div class="literature-layout">
-
-      <div class="book-page">
-
-        <span class="page-number">
-          17
-        </span>
-
-        <p class="book-small">
-          a page that probably belongs
-          somewhere in a book
-        </p>
-
-        <h2>
-          Some people<br>
-          collect photographs.
-          <br>
-          <i>You collect sentences.</i>
-        </h2>
-
-        <p class="book-bottom">
-          and maybe that's why your writing
-          always feels a little like home.
-        </p>
-
-      </div>
-
-
-      <div class="literature-copy">
-
-        <p>
-          Maybe that's why you like writing.
-          You've always known that some things
-          are easier to keep when they're turned
-          into words.
-        </p>
-
-        <p>
-          So keep writing the little things.
-          The strange thoughts.
-          The sentences that arrive at 2 a.m.
-          The stories nobody asked for.
-        </p>
-
-        <p class="highlight-line">
-          They might become something beautiful.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PHOTO MEMORY -->
-
-  <section class="memories section">
-
-    <div class="section-number">
-      04 / evidence that we existed here
-    </div>
-
-    <div class="memory-layout">
-
-      <div class="polaroid main-photo">
-
-        <div class="tape"></div>
-
-        <img src="us.jpg" alt="us">
-
-        <p>
-          no particular reason.<br>
-          just because.
-        </p>
-
-      </div>
-
-
-      <div class="polaroid small-photo">
-
-        <div class="tape"></div>
-
-        <img src="raysha.jpg" alt="Raysha">
-
-        <p>
-          raysha being raysha.
-        </p>
-
-      </div>
-
-
-      <div class="memory-text">
-
-        <p class="little-heading">
-          a tiny reminder
-        </p>
-
-        <h2>
-          Some moments<br>
-          don't need<br>
-          a caption.
-        </h2>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ARCHITECTURE -->
-
-  <section class="architecture section" id="architecture">
-
-    <div class="section-number">
-      05 / someday
-    </div>
-
-    <div class="architecture-header">
-
-      <div>
-
-        <p class="little-heading">
-          for the girl who wants to build worlds
-        </p>
-
-        <h2>
-          maybe architecture<br>
-          was always meant<br>
-          for you.
-        </h2>
-
-      </div>
-
-      <p>
-        You like words that mean something.
-        You like spaces that feel like home.
-        Maybe architecture is somewhere
-        beautifully in between.
-      </p>
-
-    </div>
-
-
-    <!-- SIMPLE ARCHITECTURE CARD -->
-
-    <div class="future-card">
-
-      <div class="future-photo">
-
-        <img src="ui.jpg" alt="Universitas Indonesia">
-
-      </div>
-
-
-      <div class="future-info">
-
-        <p class="future-label">
-          PROJECT: ONE DAY
-        </p>
-
-        <h3>
-          Future Architect,
-          <br>
-          Raysha Nazwa Irnawan.
-        </h3>
-
-        <div class="future-details">
-
-          <div>
-            <span>location</span>
-            <strong>somewhere near UI</strong>
-          </div>
-
-          <div>
-            <span>status</span>
-            <strong>still dreaming</strong>
-          </div>
-
-          <div>
-            <span>completion</span>
-            <strong>we'll see.</strong>
-          </div>
-
-        </div>
-
-        <p class="future-letter">
-
-          Maybe one day you'll walk into a building
-          you designed yourself and think—
-
-          <i>oh.</i>
-
-          <br><br>
-
-          So this is what all those little dreams
-          were for.
-
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- ARCHITECTURE WORDS -->
-
-    <div class="architecture-words">
-
-      <span>space</span>
-      <span>light</span>
-      <span>form</span>
-      <span>stories</span>
-      <span>people</span>
-      <span>home</span>
-
-    </div>
-
-  </section>
-
-
-  <!-- QUOTE -->
-
-  <section class="quote-section">
-
-    <div class="quote-container">
-
-      <span class="quote-mark">
-        “
-      </span>
-
-      <p class="quote active">
-        Some friendships become memories.
-        Some become a place you can always
-        come home to.
-      </p>
-
-      <p class="quote">
-        Maybe the future is just a collection
-        of little things we haven't met yet.
-      </p>
-
-      <p class="quote">
-        I hope life is gentle with the girl
-        who dreams this much.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- WISH JAR -->
-
-  <section class="wishes section">
-
-    <div class="section-number">
-      06 / little wishes
-    </div>
-
-    <div class="wish-layout">
-
-      <div class="jar-area">
-
-        <div class="jar-lid"></div>
-
-        <div class="jar">
-
-          <div class="paper paper-1">
-            dream
-          </div>
-
-          <div class="paper paper-2">
-            write
-          </div>
-
-          <div class="paper paper-3">
-            grow
-          </div>
-
-          <div class="paper paper-4">
-            stay curious
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="wish-content">
-
-        <p class="little-heading">
-          pick a little thought
-        </p>
-
-        <h2>
-          for whenever<br>
-          you need one.
-        </h2>
-
-        <div id="wishDisplay" class="wish-display">
-          There's probably something
-          nice waiting inside.
-        </div>
-
-        <button id="wishButton">
-          let's see
+        <button
+          class="main-btn"
+          data-scroll="#living"
+        >
+          come inside →
         </button>
 
       </div>
 
-    </div>
 
-  </section>
+      <!-- SIMPLE HOUSE VISUAL -->
+
+      <div class="hero-house">
+
+        <div class="sun"></div>
+
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+
+        <div class="house-roof"></div>
+
+        <div class="house-body">
+
+          <div class="window win1"></div>
+          <div class="window win2"></div>
+
+          <div class="door-shape"></div>
+
+          <div class="plant p1"></div>
+          <div class="plant p2"></div>
+
+        </div>
+
+        <div class="path"></div>
+
+        <div class="garden-dots">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+
+      </div>
+
+    </section>
 
 
-  <!-- FUTURE LETTER -->
 
-  <section class="letter-section section" id="letter">
+    <!-- =========================
+         LIVING ROOM
+    ========================== -->
 
-    <div class="section-number">
-      07 / one for later
-    </div>
+    <section class="room cream" id="living">
 
-    <div class="letter-intro">
+      <div class="section-head reveal">
 
-      <p class="little-heading">
-        don't open this too seriously
+        <span class="room-number">
+          01
+        </span>
+
+        <div>
+
+          <p class="eyebrow">
+            the living room
+          </p>
+
+          <h2>
+            where little memories<br>
+            like to stay
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="living-grid">
+
+        <!-- PHOTO -->
+
+        <div class="memory-card photo-card tilt">
+
+          <div class="photo-placeholder">
+
+            <span>
+              your photo here
+            </span>
+
+            <small>
+              replace with <b>us.jpg</b>
+            </small>
+
+          </div>
+
+          <p>
+            Some days become memories
+            without us noticing.
+          </p>
+
+        </div>
+
+
+        <!-- TEXT -->
+
+        <div class="memory-copy reveal">
+
+          <p>
+            Maybe friendship is made of ordinary things:
+            conversations that stretch too long,
+            laughter that makes no sense later,
+            and quiet moments where being there is enough.
+          </p>
+
+          <p>
+            I'm grateful for the kind of friendship
+            that doesn't need a grand occasion to matter.
+          </p>
+
+          <div class="little-note">
+            thank you for making growing up
+            feel a little less lonely.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TEA TIME
+    ========================== -->
+
+    <section class="room navy" id="tea">
+
+      <div class="tea-table reveal">
+
+        <div class="cup cup-a">
+
+          <span class="steam"></span>
+          <span class="steam s2"></span>
+
+        </div>
+
+
+        <div class="cup cup-b">
+
+          <span class="steam"></span>
+          <span class="steam s2"></span>
+
+        </div>
+
+
+        <div class="tea-book">
+          TEA
+          <br>
+
+          <small>
+            TIME
+          </small>
+        </div>
+
+      </div>
+
+
+      <div class="tea-copy reveal">
+
+        <p class="eyebrow">
+          tea time
+        </p>
+
+        <h2>
+          a little reminder<br>
+          to not carry everything alone
+        </h2>
+
+        <p class="muted">
+          Open a note whenever you need one.
+        </p>
+
+
+        <div class="note-stack">
+
+          <button class="note active">
+            don't forget to talk to a friend
+            when things get difficult.
+          </button>
+
+          <button class="note">
+            You don't always have to carry
+            everything by yourself.
+          </button>
+
+          <button class="note">
+            Kalau hari ini terasa berat,
+            cerita sedikit.
+            Tidak semua hal harus diselesaikan sendirian.
+          </button>
+
+          <button class="note">
+            Sometimes, a conversation is enough
+            to make a difficult day feel
+            a little lighter.
+          </button>
+
+          <button class="note">
+            Jangan menunggu semuanya baik-baik saja
+            untuk mulai bercerita.
+          </button>
+
+          <button class="note">
+            Raysha, there is always someone
+            willing to sit beside you.
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         WALL OF LITTLE THINGS
+    ========================== -->
+
+    <section class="room cream" id="little-things">
+
+      <div class="section-head reveal">
+
+        <span class="room-number">
+          02
+        </span>
+
+        <div>
+
+          <p class="eyebrow">
+            the wall of little things
+          </p>
+
+          <h2>
+            things that feel<br>
+            very Raysha
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="notes-wall">
+
+        <div class="sticky s-yellow">
+          books left open on the table
+        </div>
+
+        <div class="sticky s-pink">
+          sentences underlined twice
+        </div>
+
+        <div class="sticky s-blue">
+          stories that start from nowhere
+        </div>
+
+        <div class="sticky s-green">
+          dreaming about buildings
+        </div>
+
+        <div class="sticky s-cream">
+          quiet determination
+        </div>
+
+        <div class="sticky s-pink">
+          probably thinking too much
+        </div>
+
+        <div class="sticky s-blue">
+          making ordinary things meaningful
+        </div>
+
+        <div class="sticky s-yellow big">
+          caring more than she says.
+        </div>
+
+      </div>
+
+
+      <blockquote class="quote reveal">
+
+        “you have always had a way
+        of making little things matter.”
+
+      </blockquote>
+
+    </section>
+
+
+
+    <!-- =========================
+         BOOKSHELF
+    ========================== -->
+
+    <section
+      class="room navy bookshelf-room"
+      id="bookshelf"
+    >
+
+      <div class="section-head light reveal">
+
+        <span class="room-number">
+          03
+        </span>
+
+        <div>
+
+          <p class="eyebrow">
+            the bookshelf
+          </p>
+
+          <h2>
+            somewhere between<br>
+            words & walls
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="bookshelf">
+
+        <button
+          class="book b1"
+          data-book="book1"
+        >
+          THE BOOKS<br>
+          SHE HASN'T<br>
+          WRITTEN YET
+        </button>
+
+
+        <button
+          class="book b2"
+          data-book="book2"
+        >
+          SOMEWHERE<br>
+          BETWEEN<br>
+          WORDS & WALLS
+        </button>
+
+
+        <button
+          class="book b3"
+          data-book="book3"
+        >
+          THINGS<br>
+          I NEVER<br>
+          SAID
+        </button>
+
+
+        <button
+          class="book b4"
+          data-book="book4"
+        >
+          A FUTURE<br>
+          IN<br>
+          BLUEPRINTS
+        </button>
+
+      </div>
+
+
+      <!-- BOOK POPUP -->
+
+      <div
+        id="bookModal"
+        class="modal hidden"
+      >
+
+        <div class="modal-inner">
+
+          <button class="close-modal">
+            ×
+          </button>
+
+          <p class="eyebrow">
+            a page from the shelf
+          </p>
+
+          <h3 id="bookTitle"></h3>
+
+          <p id="bookText"></p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         KITCHEN
+    ========================== -->
+
+    <section
+      class="room cream kitchen"
+      id="kitchen"
+    >
+
+      <div class="fridge reveal">
+
+        <div class="fridge-top">
+          RAYSHA'S KITCHEN
+        </div>
+
+
+        <div class="fridge-note n1">
+          drink water
+        </div>
+
+        <div class="fridge-note n2">
+          read something
+        </div>
+
+        <div class="fridge-note n3">
+          rest when needed
+        </div>
+
+        <div class="fridge-note n4">
+          keep dreaming
+        </div>
+
+        <div class="fridge-note n5">
+          don't be too hard on yourself
+        </div>
+
+        <div class="fridge-note n6">
+          call your best friend
+        </div>
+
+        <div class="fridge-note n7">
+          you don't have to have
+          everything figured out yet.
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BEDROOM
+    ========================== -->
+
+    <section
+      class="room bedroom"
+      id="bedroom"
+    >
+
+      <div class="moon"></div>
+
+
+      <div class="bed-copy reveal">
+
+        <p class="eyebrow">
+          the bedroom
+        </p>
+
+        <h2>
+          for the quiet nights<br>
+          when you wonder
+          if you're doing enough
+        </h2>
+
+        <p>
+          You are allowed to grow slowly.
+          Not every season has to look productive.
+          Not every dream has to arrive on schedule.
+        </p>
+
+        <p>
+          Some things need time before
+          they become beautiful.
+        </p>
+
+        <p class="serif">
+          I hope you remember that becoming
+          takes time,
+          and you are already becoming.
+        </p>
+
+      </div>
+
+
+      <div class="window-night">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         STUDY ROOM
+         ARCHITECTURE
+    ========================== -->
+
+    <section
+      class="room cream"
+      id="study"
+    >
+
+      <div class="section-head reveal">
+
+        <span class="room-number">
+          04
+        </span>
+
+        <div>
+
+          <p class="eyebrow">
+            the study room
+          </p>
+
+          <h2>
+            raysha's future<br>
+            desk
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="desk-scene">
+
+        <div class="desk-lamp"></div>
+
+
+        <div class="laptop">
+
+          current project:
+
+          <br>
+
+          <strong>
+            becoming the person
+            <br>
+            you once imagined.
+          </strong>
+
+        </div>
+
+
+        <div class="paper-stack">
+
+          <span>
+            FUTURE<br>
+            ARCHITECT
+          </span>
+
+          <small>
+
+            Faculty of Engineering
+            <br>
+
+            Universitas Indonesia
+
+            <br>
+
+            <i>
+              one day.
+            </i>
+
+          </small>
+
+        </div>
+
+
+        <div class="book-pile">
+
+          read
+          <br>
+
+          write
+          <br>
+
+          dream
+
+        </div>
+
+      </div>
+
+
+      <div class="architecture-copy reveal">
+
+        <p>
+          You love words that mean something.
+          You love spaces that feel like home.
+        </p>
+
+        <p>
+          Maybe architecture was always somewhere
+          beautifully in between.
+        </p>
+
+
+        <div class="blueprint-card">
+
+          <span>
+            RAYSHA'S NOTE
+          </span>
+
+          <b>
+            build a life
+            <br>
+            worth coming home to.
+          </b>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         DREAM HOUSE
+    ========================== -->
+
+    <section
+      class="room navy dream-house"
+      id="dreamhouse"
+    >
+
+      <div class="section-head light reveal">
+
+        <span class="room-number">
+          05
+        </span>
+
+        <div>
+
+          <p class="eyebrow">
+            the house she imagined
+          </p>
+
+          <h2>
+            Raysha's little<br>
+            architectural dream
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="dream-wrap">
+
+
+        <!-- HOUSE DRAWING -->
+
+        <div class="architect-house">
+
+          <div class="ah-roof"></div>
+
+          <div class="ah-body">
+
+            <div class="ah-window w1"></div>
+            <div class="ah-window w2"></div>
+            <div class="ah-window w3"></div>
+            <div class="ah-window w4"></div>
+
+            <div class="ah-door"></div>
+
+            <div class="ah-tree"></div>
+
+          </div>
+
+          <div class="ah-ground"></div>
+
+        </div>
+
+
+        <!-- HOUSE LABELS -->
+
+        <div class="house-labels">
+
+          <div>
+
+            <b>
+              the living room
+            </b>
+
+            <span>
+              a place for people to stay awhile
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <b>
+              the study
+            </b>
+
+            <span>
+              where ideas become sketches
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <b>
+              the little garden
+            </b>
+
+            <span>
+              where things are allowed to grow
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <b>
+              the bedroom
+            </b>
+
+            <span>
+              where tomorrow can wait
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <p class="designed">
+
+        designed by:
+        <b>Raysha</b>
+
+        &nbsp; / &nbsp;
+
+        status:
+        <i>someday</i>
+
       </p>
 
-      <h2>
-        a letter<br>
-        from somewhere<br>
-        in the future.
-      </h2>
-
-    </div>
+    </section>
 
 
-    <div class="envelope-wrapper">
 
-      <div class="envelope" id="envelope">
+    <!-- =========================
+         WINDOW
+    ========================== -->
 
-        <div class="envelope-back"></div>
+    <section
+      class="room window-section"
+      id="window"
+    >
 
-        <div class="letter-paper">
+      <div class="window-copy reveal">
 
-          <p class="letter-date">
-            someday, somewhere
+        <p class="eyebrow">
+          the window
+        </p>
+
+        <h2>
+          look outside.
+        </h2>
+
+        <p>
+          Somewhere out there is a life
+          you haven't met yet.
+        </p>
+
+        <p>
+          Places you've never seen.
+          People you haven't met.
+          Pages you haven't written.
+        </p>
+
+        <p class="serif">
+          I hope you let yourself
+          be surprised by all of it.
+        </p>
+
+      </div>
+
+
+      <div class="big-window">
+
+        <div class="sky-sun"></div>
+
+        <div class="sky-city">
+
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ATTIC
+    ========================== -->
+
+    <section
+      class="room cream"
+      id="attic"
+    >
+
+      <div class="section-head reveal">
+
+        <span class="room-number">
+          06
+        </span>
+
+        <div>
+
+          <p class="eyebrow">
+            the attic
           </p>
+
+          <h2>
+            things we probably don't need,<br>
+            but keep anyway
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="attic-boxes">
+
+        <button
+          class="memory-box"
+          data-memory="remember this?"
+        >
+          remember this?
+        </button>
+
+
+        <button
+          class="memory-box"
+          data-memory="the ordinary days"
+        >
+          the ordinary days
+        </button>
+
+
+        <button
+          class="memory-box"
+          data-memory="a tiny piece of us"
+        >
+          a tiny piece of us
+        </button>
+
+
+        <button
+          class="memory-box"
+          data-memory="keep this one"
+        >
+          keep this one
+        </button>
+
+      </div>
+
+
+      <p
+        id="memoryOutput"
+        class="memory-output"
+      >
+        click a little box.
+      </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         GARDEN
+    ========================== -->
+
+    <section
+      class="room garden"
+      id="garden"
+    >
+
+      <div class="garden-copy reveal">
+
+        <p class="eyebrow">
+          the garden
+        </p>
+
+        <h2>
+          things I hope<br>
+          grow
+        </h2>
+
+      </div>
+
+
+      <div class="flowers">
+
+
+        <button
+          class="flower f1"
+          data-wish="May you get closer to the life you've been quietly imagining."
+        >
+          <span>
+            dreams
+          </span>
+        </button>
+
+
+        <button
+          class="flower f2"
+          data-wish="May you have the courage to choose the life that feels right for you."
+        >
+          <span>
+            courage
+          </span>
+        </button>
+
+
+        <button
+          class="flower f3"
+          data-wish="Never stop asking questions. Never stop wondering."
+        >
+          <span>
+            curiosity
+          </span>
+        </button>
+
+
+        <button
+          class="flower f4"
+          data-wish="May you always have stories worth telling."
+        >
+          <span>
+            stories
+          </span>
+        </button>
+
+
+        <button
+          class="flower f5"
+          data-wish="May you always have people who make the world feel a little warmer."
+        >
+          <span>
+            friendship
+          </span>
+        </button>
+
+
+        <button
+          class="flower special"
+          data-wish="I hope you grow into someone you're proud to become."
+        >
+          <span>
+            Raysha
+          </span>
+        </button>
+
+      </div>
+
+
+      <div
+        id="flowerWish"
+        class="flower-wish"
+      >
+        tap a flower.
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LITTLE WISH JAR
+    ========================== -->
+
+    <section
+      class="room cream wish-room"
+      id="jar"
+    >
+
+      <div class="jar-visual">
+
+        <div class="jar-lid"></div>
+
+        <div class="jar-glass">
+
+          <span>
+            little<br>
+            wishes
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="wish-copy reveal">
+
+        <p class="eyebrow">
+          the little wish jar
+        </p>
+
+        <h2>
+          pick a little<br>
+          thought
+        </h2>
+
+
+        <p
+          id="wishText"
+          class="wish-text"
+        >
+          Maybe today is a good day
+          to remember how far
+          you've already come.
+        </p>
+
+
+        <button
+          id="wishBtn"
+          class="main-btn"
+        >
+          another little thought →
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         LETTER FROM THE FUTURE
+    ========================== -->
+
+    <section
+      class="room future-letter"
+      id="letter"
+    >
+
+      <!-- MAILBOX -->
+
+      <div class="letter-scene reveal">
+
+        <div class="mailbox">
+
+          <div class="mail-flag"></div>
+
+          <div class="mail-slot"></div>
+
+        </div>
+
+
+        <span class="mail-label">
+
+          POST OFFICE
+          <br>
+
+          FOR THE FUTURE
+
+        </span>
+
+      </div>
+
+
+      <!-- LETTER INTRO -->
+
+      <div class="letter-copy reveal">
+
+        <p class="eyebrow">
+          a letter from somewhere in the future
+        </p>
+
+        <h2>
+          for future Raysha.
+        </h2>
+
+        <p class="letter-intro">
+
+          There is a letter waiting
+          in the mailbox.
+
+          <br>
+
+          Open it when you're ready.
+
+        </p>
+
+
+        <button
+          id="openLetter"
+          class="main-btn"
+        >
+          open the letter →
+        </button>
+
+      </div>
+
+
+      <!-- LETTER POPUP -->
+
+      <div
+        id="letterModal"
+        class="letter-modal hidden"
+      >
+
+        <div class="paper-letter">
+
+          <button class="close-letter">
+            ×
+          </button>
+
+
+          <div class="stamp">
+            R • 2040
+          </div>
+
+
+          <p class="eyebrow">
+            somewhere in the future
+          </p>
+
 
           <h3>
             Dear future Raysha,
           </h3>
 
+
           <p>
             So... did we make it?
           </p>
 
+
           <p>
             Are you an architect now?
             Do you still carry a notebook everywhere?
-            Do you still stop mid-conversation because
-            you suddenly thought of a sentence worth writing down?
+            Do you still stop in the middle of a conversation
+            because you suddenly thought of a sentence
+            worth writing down?
           </p>
+
 
           <p>
             I hope you do.
           </p>
 
+
           <p>
             And if life didn't follow the blueprint,
             that's okay too.
+
+            <b>
+              Some of the best things were never planned.
+            </b>
           </p>
 
-          <p class="special">
-            Some of the best things were never planned.
-          </p>
 
           <p>
             Keep reading.
@@ -673,149 +1254,165 @@
             Keep becoming.
           </p>
 
-          <p class="signature">
-            — someone who's always rooting for you.
+
+          <p>
+            And when the days get difficult,
+            please remember to talk to someone.
+
+            Let people care about you.
+
+            You were never meant to carry
+            the whole world alone.
+          </p>
+
+
+          <p class="letter-end">
+
+            With all the good wishes
+            I could fit into one little house,
+
+            <br><br>
+
+            <i>
+              someone who is very,
+              very glad to know you.
+            </i>
+
           </p>
 
         </div>
 
-        <div class="envelope-flap"></div>
-
       </div>
 
-
-      <button id="letterButton">
-        open it
-      </button>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- THINGS I HOPE SHE BUILDS -->
 
-  <section class="build section">
+    <!-- =========================
+         FINAL PORCH
+    ========================== -->
 
-    <div class="section-number">
-      08 / things I hope you build
-    </div>
+    <section
+      class="porch"
+      id="porch"
+    >
 
-    <div class="build-title">
+      <!-- HOUSE VISUAL -->
 
-      <h2>
-        not just buildings.
-      </h2>
+      <div class="porch-house">
 
-      <p>
-        those too, obviously.
-      </p>
+        <div class="porch-roof"></div>
 
-    </div>
+        <div class="porch-wall">
 
+          <div class="porch-window"></div>
 
-    <div class="build-list">
+          <div class="porch-door"></div>
 
-      <div>
-        <span>01</span>
-        <p>
-          A career that makes you excited
-          to wake up and keep learning.
-        </p>
-      </div>
+          <div class="porch-light"></div>
 
-      <div>
-        <span>02</span>
-        <p>
-          A home where you can finally
-          put your feet up.
-        </p>
-      </div>
-
-      <div>
-        <span>03</span>
-        <p>
-          A life full of stories worth telling.
-        </p>
-      </div>
-
-      <div>
-        <span>04</span>
-        <p>
-          And a future that feels
-          unmistakably yours.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ENDING -->
-
-  <section class="ending">
-
-    <div class="ending-stars">
-      ✦ &nbsp; ✧ &nbsp; ✦
-    </div>
-
-
-    <div class="ending-house">
-
-      <div class="ending-roof"></div>
-
-      <div class="ending-wall">
-
-        <div class="ending-window">
-          <span></span>
         </div>
 
-        <div class="ending-door"></div>
+        <div class="porch-ground"></div>
 
       </div>
 
-    </div>
+
+      <!-- FINAL MESSAGE -->
+
+      <div class="porch-copy reveal">
+
+        <p class="eyebrow">
+          before you go...
+        </p>
 
 
-    <div class="ending-copy">
+        <h2>
 
-      <p class="little-heading">
-        anyway,
-      </p>
+          I hope wherever
+          <br>
 
-      <h2>
-        enough poetry<br>
-        for one website.
-      </h2>
+          you end up,
 
-      <p class="ending-text">
+          <br>
 
-        Go build something.
+          <em>
+            it feels like home.
+          </em>
 
-        <br><br>
+        </h2>
 
-        A building, perhaps.<br>
-        A story, maybe.<br>
-        <strong>A life, definitely.</strong>
 
-      </p>
+        <p>
 
-      <p class="last-line">
-        The little house will still be here.
-      </p>
+          I don't know what the future
+          will look like.
 
-      <div class="final-name">
-        — for Raysha, always.
+          Maybe there will be buildings
+          with your name somewhere in the plans.
+
+          Maybe there will be books
+          with your words between the pages.
+
+          Maybe life will take you somewhere
+          neither of us expected.
+
+        </p>
+
+
+        <p>
+
+          But wherever you go,
+          I hope you know that you are loved,
+          you are capable,
+          and you never have to become someone else
+          to deserve good things.
+
+        </p>
+
+
+        <p class="serif">
+
+          The light's always on.
+
+          <br>
+
+          You know where to find it.
+
+        </p>
+
+
+        <p class="signature">
+
+          — for Raysha, always.
+
+        </p>
+
+
+        <button
+          class="main-btn ghost"
+          data-scroll="#door"
+        >
+          go back inside ↺
+        </button>
+
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </main>
 
+
+  <!-- FOOTER -->
 
   <footer>
-    made with friendship & a little bit of literature.
+
+    <span>
+      made with a little navy,
+      a few polka dots,
+      and lots of good wishes.
+    </span>
+
   </footer>
 
 
