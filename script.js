@@ -1,196 +1,120 @@
 /* =========================================
-   RUMAH RAYSHA — INTERACTIVE SCRIPT
+   RUMAH RAYSHA — INTERACTION SCRIPT
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     1. ELEMENTS
-  ========================= */
+  /* ===============================
+     1. MUSIC PLAYER
+     =============================== */
 
-  const body = document.body;
+  const music = document.getElementById("backgroundMusic");
+  const musicButton = document.getElementById("musicButton");
+  const musicIcon = document.getElementById("musicIcon");
+  const musicText = document.getElementById("musicText");
 
-  const lamp = document.querySelector(".lamp");
-  const lightSwitch = document.querySelector("#lightSwitch");
-
-  const music = document.querySelector("#backgroundMusic");
-  const musicButton = document.querySelector("#musicButton");
-  const musicText = document.querySelector("#musicText");
-
-  const door = document.querySelector(".door");
-  const doorButton = document.querySelector("#doorButton");
-
-  const letter = document.querySelector(".future-letter");
-  const letterButton = document.querySelector("#letterButton");
-  const closeLetter = document.querySelector("#closeLetter");
-
-  const photoItems = document.querySelectorAll(".memory-photo");
-
-  const roomItems = document.querySelectorAll("[data-room]");
-
-  /* =========================
-     2. WELCOME EFFECT
-  ========================= */
-
-  setTimeout(() => {
-    body.classList.add("loaded");
-  }, 150);
-
-
-  /* =========================
-     3. LIGHT SWITCH
-  ========================= */
-
-  if (lightSwitch) {
-
-    lightSwitch.addEventListener("click", () => {
-
-      body.classList.toggle("lights-on");
-
-      const isOn = body.classList.contains("lights-on");
-
-      lightSwitch.setAttribute(
-        "aria-label",
-        isOn ? "Turn lights off" : "Turn lights on"
-      );
-
-      lightSwitch.setAttribute(
-        "title",
-        isOn ? "Turn lights off" : "Turn lights on"
-      );
-
-      if (lamp) {
-        lamp.classList.toggle("active", isOn);
-      }
-
-    });
-
-  }
-
-
-  /* =========================
-     4. MUSIC PLAYER
-  ========================= */
+  let isPlaying = false;
 
   if (music && musicButton) {
+    musicButton.addEventListener("click", () => {
 
-    musicButton.addEventListener("click", async () => {
+      if (music.paused) {
+        music.play()
+          .then(() => {
+            isPlaying = true;
 
-      try {
+            if (musicIcon) musicIcon.textContent = "Ⅱ";
+            if (musicText) musicText.textContent = "pause the music";
+            musicButton.classList.add("playing");
+          })
+          .catch(() => {
+            alert("Musiknya belum bisa diputar. Pastikan file music.mp3 ada di folder yang sama dengan index.html.");
+          });
 
-        if (music.paused) {
+      } else {
+        music.pause();
 
-          await music.play();
+        isPlaying = false;
 
-          musicButton.classList.add("playing");
-
-          if (musicText) {
-            musicText.textContent = "music playing";
-          }
-
-        } else {
-
-          music.pause();
-
-          musicButton.classList.remove("playing");
-
-          if (musicText) {
-            musicText.textContent = "play our song";
-          }
-
-        }
-
-      } catch (error) {
-
-        console.log("Music belum bisa dimainkan:", error);
-
-        if (musicText) {
-          musicText.textContent = "tap again to play";
-        }
-
+        if (musicIcon) musicIcon.textContent = "▶";
+        if (musicText) musicText.textContent = "play our song";
+        musicButton.classList.remove("playing");
       }
 
     });
+  }
 
 
-    music.addEventListener("ended", () => {
+  /* ===============================
+     2. LAMP INTERACTION
+     =============================== */
 
-      musicButton.classList.remove("playing");
+  const lamps = document.querySelectorAll(".lamp");
 
-      if (musicText) {
-        musicText.textContent = "play our song";
-      }
+  lamps.forEach((lamp) => {
 
+    lamp.addEventListener("click", () => {
+
+      lamp.classList.toggle("lamp-on");
+
+      document.body.classList.toggle("warm-mode");
+
+    });
+
+  });
+
+
+  /* ===============================
+     3. SURAT DARI MASA DEPAN
+     =============================== */
+
+  const mailbox = document.getElementById("mailbox");
+  const letterModal = document.getElementById("letterModal");
+  const closeLetter = document.getElementById("closeLetter");
+
+  function openLetter() {
+    if (!letterModal) return;
+
+    letterModal.classList.add("show");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeLetterBox() {
+    if (!letterModal) return;
+
+    letterModal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+  }
+
+  if (mailbox) {
+
+    mailbox.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      openLetter();
+    });
+
+  }
+
+  if (closeLetter) {
+
+    closeLetter.addEventListener("click", (event) => {
+      event.preventDefault();
+      closeLetterBox();
     });
 
   }
 
 
-  /* =========================
-     5. DOOR INTERACTION
-  ========================= */
+  /* Klik area luar surat untuk menutup */
 
-  if (doorButton && door) {
+  if (letterModal) {
 
-    doorButton.addEventListener("click", () => {
+    letterModal.addEventListener("click", (event) => {
 
-      door.classList.toggle("open");
-
-      const isOpen = door.classList.contains("open");
-
-      doorButton.textContent = isOpen
-        ? "close the door"
-        : "open the door";
-
-    });
-
-  }
-
-
-  /* =========================
-     6. FUTURE LETTER
-  ========================= */
-
-  if (letterButton && letter) {
-
-    letterButton.addEventListener("click", () => {
-
-      letter.classList.add("show");
-
-      body.classList.add("letter-open");
-
-    });
-
-  }
-
-
-  if (closeLetter && letter) {
-
-    closeLetter.addEventListener("click", () => {
-
-      letter.classList.remove("show");
-
-      body.classList.remove("letter-open");
-
-    });
-
-  }
-
-
-  /* =========================
-     7. CLICK OUTSIDE LETTER
-  ========================= */
-
-  if (letter) {
-
-    letter.addEventListener("click", (event) => {
-
-      if (event.target === letter) {
-
-        letter.classList.remove("show");
-
-        body.classList.remove("letter-open");
-
+      if (event.target === letterModal) {
+        closeLetterBox();
       }
 
     });
@@ -198,172 +122,80 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================
-     8. ESCAPE CLOSE LETTER
-  ========================= */
+  /* ESC untuk menutup surat */
 
   document.addEventListener("keydown", (event) => {
 
     if (event.key === "Escape") {
-
-      if (letter) {
-        letter.classList.remove("show");
-      }
-
-      body.classList.remove("letter-open");
-
+      closeLetterBox();
     }
 
   });
 
 
-  /* =========================
-     9. PHOTO LIGHTBOX
-  ========================= */
+  /* ===============================
+     4. FOTO LIGHTBOX
+     =============================== */
 
-  photoItems.forEach((photo) => {
+  const photos = document.querySelectorAll(".memory-photo");
+
+  photos.forEach((photo) => {
 
     photo.addEventListener("click", () => {
 
-      const source =
-        photo.getAttribute("src") ||
-        photo.querySelector("img")?.getAttribute("src");
+      const src = photo.getAttribute("src");
 
-      if (!source) return;
+      if (!src) return;
 
-      createLightbox(source);
+      const viewer = document.createElement("div");
 
-    });
+      viewer.className = "photo-viewer";
 
-  });
+      viewer.innerHTML = `
+        <div class="photo-viewer-inner">
+          <button class="photo-close">&times;</button>
+          <img src="${src}" alt="memory">
+        </div>
+      `;
 
+      document.body.appendChild(viewer);
 
-  function createLightbox(source) {
+      requestAnimationFrame(() => {
+        viewer.classList.add("show");
+      });
 
-    const existing = document.querySelector(".image-lightbox");
+      const close = viewer.querySelector(".photo-close");
 
-    if (existing) {
-      existing.remove();
-    }
+      close.addEventListener("click", () => {
+        viewer.classList.remove("show");
 
-    const overlay = document.createElement("div");
+        setTimeout(() => {
+          viewer.remove();
+        }, 250);
+      });
 
-    overlay.className = "image-lightbox";
+      viewer.addEventListener("click", (event) => {
 
-    overlay.innerHTML = `
-      <div class="lightbox-inner">
-        <button class="lightbox-close" aria-label="Close image">
-          ×
-        </button>
+        if (event.target === viewer) {
+          viewer.classList.remove("show");
 
-        <img src="${source}" alt="A memory from our little house">
-      </div>
-    `;
+          setTimeout(() => {
+            viewer.remove();
+          }, 250);
+        }
 
-    document.body.appendChild(overlay);
-
-    requestAnimationFrame(() => {
-      overlay.classList.add("active");
-    });
-
-    const close = overlay.querySelector(".lightbox-close");
-
-    close.addEventListener("click", () => {
-      closeLightbox(overlay);
-    });
-
-    overlay.addEventListener("click", (event) => {
-
-      if (event.target === overlay) {
-        closeLightbox(overlay);
-      }
-
-    });
-
-  }
-
-
-  function closeLightbox(overlay) {
-
-    overlay.classList.remove("active");
-
-    setTimeout(() => {
-      overlay.remove();
-    }, 250);
-
-  }
-
-
-  /* =========================
-     10. ROOM OBJECTS
-  ========================= */
-
-  roomItems.forEach((item) => {
-
-    item.addEventListener("click", () => {
-
-      item.classList.add("room-object-active");
-
-      setTimeout(() => {
-        item.classList.remove("room-object-active");
-      }, 500);
+      });
 
     });
 
   });
 
 
-  /* =========================
-     11. SCROLL REVEAL
-  ========================= */
+  /* ===============================
+     5. SMALL POLKA DOT FLOATING EFFECT
+     =============================== */
 
-  const revealItems =
-    document.querySelectorAll(
-      ".reveal, .room-section, .memory-card, .note-card"
-    );
-
-  if ("IntersectionObserver" in window) {
-
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-            obs.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealItems.forEach((item) => {
-      observer.observe(item);
-    });
-
-  } else {
-
-    revealItems.forEach((item) => {
-      item.classList.add("visible");
-    });
-
-  }
-
-
-  /* =========================
-     12. LITTLE FLOATING DOTS
-  ========================= */
-
-  const dotContainer =
-    document.querySelector(".floating-dots");
+  const dotContainer = document.querySelector(".floating-dots");
 
   if (dotContainer) {
 
@@ -371,15 +203,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const dot = document.createElement("span");
 
-      dot.className = "floating-dot";
+      dot.classList.add("floating-dot");
+
+      const size = Math.floor(Math.random() * 8) + 4;
+
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`;
 
       dot.style.left = `${Math.random() * 100}%`;
+      dot.style.top = `${Math.random() * 100}%`;
 
-      dot.style.animationDelay =
-        `${Math.random() * 5}s`;
-
-      dot.style.animationDuration =
-        `${5 + Math.random() * 6}s`;
+      dot.style.animationDelay = `${Math.random() * 5}s`;
 
       dotContainer.appendChild(dot);
 
@@ -388,153 +222,293 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =========================
-     13. TYPING EFFECT
-  ========================= */
+  /* ===============================
+     6. SCROLL REVEAL
+     =============================== */
 
-  const typingElement =
-    document.querySelector("#typingText");
+  const revealElements = document.querySelectorAll(
+    ".room-card, .memory-card, .quote-card, .architecture-card, .future-note"
+  );
 
-  if (typingElement) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
 
-    const words = [
-      "a little place to rest.",
-      "a corner for your dreams.",
-      "a home for every version of you.",
-      "a reminder that you are never alone."
-    ];
+      entries.forEach((entry) => {
 
-    let wordIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
+        if (entry.isIntersecting) {
 
-    function typeText() {
+          entry.target.classList.add("revealed");
 
-      const currentWord = words[wordIndex];
-
-      if (!deleting) {
-
-        typingElement.textContent =
-          currentWord.substring(0, charIndex + 1);
-
-        charIndex++;
-
-        if (charIndex === currentWord.length) {
-
-          deleting = true;
-
-          setTimeout(typeText, 1800);
-
-          return;
+          revealObserver.unobserve(entry.target);
 
         }
 
-      } else {
+      });
 
-        typingElement.textContent =
-          currentWord.substring(0, charIndex - 1);
-
-        charIndex--;
-
-        if (charIndex === 0) {
-
-          deleting = false;
-
-          wordIndex =
-            (wordIndex + 1) % words.length;
-
-        }
-
-      }
-
-      setTimeout(
-        typeText,
-        deleting ? 45 : 75
-      );
-
+    },
+    {
+      threshold: 0.12
     }
+  );
 
-    typeText();
-
-  }
-
-
-  /* =========================
-     14. SECRET MESSAGE
-  ========================= */
-
-  const secretButton =
-    document.querySelector("#secretButton");
-
-  const secretMessage =
-    document.querySelector("#secretMessage");
-
-  if (secretButton && secretMessage) {
-
-    secretButton.addEventListener("click", () => {
-
-      secretMessage.classList.toggle("show");
-
-      const visible =
-        secretMessage.classList.contains("show");
-
-      secretButton.textContent =
-        visible
-          ? "okay, that's enough"
-          : "one more little thing";
-
-    });
-
-  }
+  revealElements.forEach((element) => {
+    element.classList.add("reveal");
+    revealObserver.observe(element);
+  });
 
 
-  /* =========================
-     15. SMOOTH SCROLL
-  ========================= */
+  /* ===============================
+     7. NAVIGATION
+     =============================== */
 
-  document.querySelectorAll("a[href^='#']")
-    .forEach((link) => {
+  const navLinks = document.querySelectorAll("[data-scroll]");
 
-      link.addEventListener("click", (event) => {
+  navLinks.forEach((link) => {
 
-        const targetId =
-          link.getAttribute("href");
+    link.addEventListener("click", (event) => {
 
-        if (!targetId || targetId === "#") {
-          return;
-        }
+      event.preventDefault();
 
-        const target =
-          document.querySelector(targetId);
+      const targetID = link.getAttribute("data-scroll");
+      const target = document.getElementById(targetID);
 
-        if (!target) {
-          return;
-        }
-
-        event.preventDefault();
+      if (target) {
 
         target.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
 
+      }
+
+    });
+
+  });
+
+
+  /* ===============================
+     8. TEA NOTE
+     =============================== */
+
+  const teaNote = document.getElementById("teaNote");
+  const teaButton = document.getElementById("teaButton");
+
+  if (teaButton && teaNote) {
+
+    teaButton.addEventListener("click", () => {
+
+      teaNote.classList.toggle("open");
+
+      if (teaNote.classList.contains("open")) {
+        teaButton.textContent = "close the note";
+      } else {
+        teaButton.textContent = "read the note";
+      }
+
+    });
+
+  }
+
+
+  /* ===============================
+     9. ARCHITECTURE CARDS
+     =============================== */
+
+  const architectureCards =
+    document.querySelectorAll(".architecture-card");
+
+  architectureCards.forEach((card) => {
+
+    card.addEventListener("click", () => {
+
+      architectureCards.forEach((item) => {
+        item.classList.remove("selected");
+      });
+
+      card.classList.add("selected");
+
+    });
+
+  });
+
+
+  /* ===============================
+     10. WINDOW DAY/NIGHT EFFECT
+     =============================== */
+
+  const windowButton = document.getElementById("windowButton");
+
+  if (windowButton) {
+
+    windowButton.addEventListener("click", () => {
+
+      document.body.classList.toggle("night-mode");
+
+      const isNight =
+        document.body.classList.contains("night-mode");
+
+      windowButton.setAttribute(
+        "aria-label",
+        isNight ? "Switch to daytime" : "Switch to nighttime"
+      );
+
+    });
+
+  }
+
+
+  /* ===============================
+     11. TYPEWRITER EFFECT
+     =============================== */
+
+  const typewriter = document.querySelector(".typewriter");
+
+  if (typewriter) {
+
+    const originalText = typewriter.textContent;
+
+    typewriter.textContent = "";
+
+    let index = 0;
+
+    function typeText() {
+
+      if (index < originalText.length) {
+
+        typewriter.textContent += originalText.charAt(index);
+
+        index++;
+
+        setTimeout(typeText, 45);
+
+      }
+
+    }
+
+    setTimeout(typeText, 500);
+
+  }
+
+
+  /* ===============================
+     12. RANDOM LITTLE ROOM DETAILS
+     =============================== */
+
+  const tinyDetails = document.querySelectorAll(".tiny-detail");
+
+  tinyDetails.forEach((detail, index) => {
+
+    detail.style.animationDelay = `${index * 0.15}s`;
+
+  });
+
+
+  /* ===============================
+     13. MOBILE MENU
+     =============================== */
+
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  if (menuButton && mobileMenu) {
+
+    menuButton.addEventListener("click", () => {
+
+      mobileMenu.classList.toggle("open");
+
+      menuButton.classList.toggle("active");
+
+    });
+
+    const mobileLinks =
+      mobileMenu.querySelectorAll("a");
+
+    mobileLinks.forEach((link) => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("open");
+        menuButton.classList.remove("active");
+
       });
 
     });
 
+  }
 
-  /* =========================
-     16. CONSOLE MESSAGE
-  ========================= */
+
+  /* ===============================
+     14. MAKE SURE MAILBOX IS CLICKABLE
+     =============================== */
+
+  if (mailbox) {
+
+    mailbox.style.cursor = "pointer";
+
+    mailbox.setAttribute(
+      "role",
+      "button"
+    );
+
+    mailbox.setAttribute(
+      "tabindex",
+      "0"
+    );
+
+    mailbox.addEventListener("keydown", (event) => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+        openLetter();
+
+      }
+
+    });
+
+  }
+
+
+  /* ===============================
+     15. LITTLE "HOME" FEELING
+     =============================== */
+
+  const homeObjects =
+    document.querySelectorAll(".home-object");
+
+  homeObjects.forEach((object) => {
+
+    object.addEventListener("mouseenter", () => {
+      object.classList.add("object-hover");
+    });
+
+    object.addEventListener("mouseleave", () => {
+      object.classList.remove("object-hover");
+    });
+
+  });
+
+
+  /* ===============================
+     16. CURRENT YEAR
+     =============================== */
+
+  const yearElements =
+    document.querySelectorAll("[data-year]");
+
+  yearElements.forEach((element) => {
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
 
   console.log(
-    "%cWelcome to Raysha's little house.",
-    "font-size:18px;font-weight:bold;"
-  );
-
-  console.log(
-    "%cSome places are built with walls. Some are built with memories.",
-    "font-size:13px;"
+    "Welcome home, Raysha."
   );
 
 });
