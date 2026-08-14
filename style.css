@@ -1,3558 +1,702 @@
-:root {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    --navy: #081b35;
-    --navy-2: #102c4f;
+  <title>For Raysha — A Little Place to Dream</title>
 
-    --cream: #f8f4eb;
-    --paper: #fffdf8;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    --blue: #9db7d1;
-    --blue-light: #dce7f1;
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    --ink: #17263b;
-    --muted: #687589;
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    --gold: #d5b36a;
-    --pink: #d8aeb7;
+<body>
 
-    --line: rgba(8,27,53,.18);
+  <!-- BACKGROUND POLKADOTS -->
+  <div class="polka polka-1"></div>
+  <div class="polka polka-2"></div>
+  <div class="polka polka-3"></div>
+  <div class="polka polka-4"></div>
 
-    --serif:
-        "Playfair Display",
-        serif;
+  <!-- FLOATING STARS -->
+  <div class="stars">
+    <span>✦</span>
+    <span>✧</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>✦</span>
+  </div>
 
-    --hand:
-        "Caveat",
-        cursive;
 
-    --sans:
-        "DM Sans",
-        sans-serif;
+  <!-- MUSIC PLAYER -->
+  <div class="music-player">
+    <div class="music-icon">♪</div>
 
-}
+    <div class="music-info">
+      <small>NOW PLAYING</small>
+      <span>A little song for this little place</span>
+    </div>
 
+    <button id="musicBtn" aria-label="Play music">
+      ▶
+    </button>
 
-* {
+    <audio id="music" loop>
+      <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 
-    margin: 0;
-    padding: 0;
 
-    box-sizing: border-box;
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">R.N.I.</div>
 
-}
+    <div class="nav-links">
+      <a href="#home">home</a>
+      <a href="#dreams">dreams</a>
+      <a href="#architecture">architecture</a>
+      <a href="#letter">letter</a>
+    </div>
+  </nav>
 
 
-html {
+  <!-- HERO -->
+  <main id="home">
 
-    scroll-behavior: smooth;
+    <section class="hero">
 
-}
+      <div class="hero-copy">
 
+        <p class="eyebrow">
+          A LITTLE PLACE MADE FOR YOU
+        </p>
 
-body {
+        <h1>
+          For <span>Raysha</span>,<br>
+          who dreams in<br>
+          <i>lines & spaces.</i>
+        </h1>
 
-    font-family: var(--sans);
+        <p class="hero-description">
+          Some friendships become memories.
+          Some become a place you can always come home to.
+          This little corner is for you — your dreams,
+          your words, and all the things I hope life brings your way.
+        </p>
 
-    color: var(--ink);
+        <a href="#dreams" class="main-button">
+          walk inside →
+        </a>
 
-    background: var(--cream);
+      </div>
 
-    overflow-x: hidden;
 
-}
+      <!-- HOUSE -->
+      <div class="house-scene">
 
+        <div class="moon"></div>
 
-/* =====================================================
-   GLOBAL POLKADOT BACKGROUND
-===================================================== */
+        <div class="house">
 
-body::before {
+          <div class="roof"></div>
 
-    content: "";
+          <div class="house-body">
 
-    position: fixed;
+            <div class="window window-left">
+              <div></div>
+              <div></div>
+            </div>
 
-    inset: 0;
+            <div class="door">
+              <span></span>
+            </div>
 
-    z-index: -10;
+            <div class="window window-right">
+              <div></div>
+              <div></div>
+            </div>
 
-    pointer-events: none;
+          </div>
 
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(16,44,79,.16) 2px,
-            transparent 2.5px
-        );
+          <div class="house-base"></div>
 
-    background-size: 34px 34px;
+        </div>
 
-    opacity: .8;
+        <div class="grass"></div>
 
-}
+      </div>
 
+    </section>
 
-/* =====================================================
-   OPENING
-===================================================== */
 
-.opening {
+    <!-- INTRO -->
+    <section class="intro section">
 
-    position: fixed;
+      <div class="section-label">
+        01 / A SMALL CORNER
+      </div>
 
-    inset: 0;
+      <div class="intro-content">
 
-    z-index: 5000;
+        <div>
+          <p class="mini-title">dear Raysha,</p>
 
-    background: var(--navy);
+          <h2>
+            You don't have to<br>
+            have everything figured out.
+          </h2>
+        </div>
 
-    color: white;
+        <p>
+          Maybe the future still looks a little blurry.
+          Maybe there are days when the dream feels far away.
+          But I hope you never forget how much possibility
+          lives inside you.
+          <br><br>
+          Keep reading. Keep writing. Keep drawing.
+          Keep wondering what could exist beyond the next line.
+        </p>
 
-    display: flex;
+      </div>
 
-    align-items: center;
+    </section>
 
-    justify-content: center;
 
-    text-align: center;
+    <!-- DREAM WALL -->
+    <section class="dream-section section" id="dreams">
 
-    overflow: hidden;
+      <div class="section-label">
+        02 / DREAM WALL
+      </div>
 
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
+      <div class="section-heading">
+        <p class="mini-title">things worth dreaming about</p>
 
-}
+        <h2>
+          Pin your dreams.<br>
+          Let them grow.
+        </h2>
+      </div>
 
 
-.opening.opened {
+      <div class="dream-board">
 
-    opacity: 0;
+        <div class="board-title">
+          RAYSHA'S FUTURE BOARD
+        </div>
 
-    visibility: hidden;
+        <div class="sticky sticky-one">
+          <span>01</span>
+          Architecture
+          <small>make spaces feel like home</small>
+        </div>
 
-}
+        <div class="sticky sticky-two">
+          <span>02</span>
+          UI
+          <small>one day, maybe sooner than you think</small>
+        </div>
 
+        <div class="sticky sticky-three">
+          <span>03</span>
+          Keep Writing
+          <small>your words deserve somewhere to live</small>
+        </div>
 
-.opening-content {
+        <div class="sticky sticky-four">
+          <span>04</span>
+          See The World
+          <small>collect places, not just things</small>
+        </div>
 
-    max-width: 700px;
+        <div class="board-note">
+          <i>“There is always another room<br>
+          waiting to be imagined.”</i>
+        </div>
 
-    padding: 30px;
+      </div>
 
-    position: relative;
+    </section>
 
-    z-index: 2;
 
-}
+    <!-- PHOTO SECTION -->
+    <section class="photo-section section">
 
+      <div class="section-label">
+        03 / LITTLE MEMORIES
+      </div>
 
-.opening-small {
+      <div class="photo-grid">
 
-    color: var(--gold);
+        <div class="photo-card photo-main">
+          <div class="tape"></div>
 
-    font-size: 11px;
+          <img src="assets/us.jpg" alt="A memory together">
 
-    text-transform: uppercase;
+          <p>
+            some moments don't need<br>
+            a caption.
+          </p>
+        </div>
 
-    letter-spacing: 4px;
 
-    margin-bottom: 15px;
+        <div class="photo-card photo-small">
+          <div class="tape"></div>
 
-}
+          <img src="assets/raysha.jpg" alt="Raysha">
 
+          <p>
+            the girl behind<br>
+            all those beautiful words.
+          </p>
+        </div>
 
-.opening h1 {
 
-    font-family: var(--hand);
+        <div class="memory-note">
+          <span>NOTE TO SELF</span>
 
-    font-size: clamp(90px,15vw,180px);
+          <p>
+            Years from now,
+            I hope we'll look back
+            at these little moments
+            and smile.
+          </p>
+        </div>
 
-    font-weight: 500;
+      </div>
 
-    line-height: .75;
+    </section>
 
-}
 
+    <!-- ARCHITECTURE -->
+    <section class="architecture-section section" id="architecture">
 
-.opening-sub {
+      <div class="section-label">
+        04 / THE FUTURE ARCHITECT
+      </div>
 
-    font-family: var(--serif);
+      <div class="architecture-intro">
 
-    font-style: italic;
+        <div>
+          <p class="mini-title">a dream drawn on paper</p>
 
-    color: #aebdce;
+          <h2>
+            One day,<br>
+            you'll build<br>
+            <i>what you imagine.</i>
+          </h2>
+        </div>
 
-    line-height: 1.8;
+        <p>
+          Architecture is more than walls, windows,
+          measurements and structures.
+          It's about understanding how people move,
+          feel, gather and belong.
+          <br><br>
+          And somehow, that feels very much like you.
+        </p>
 
-    margin: 40px 0;
+      </div>
 
-}
 
+      <!-- BLUEPRINT BOARD -->
+      <div class="blueprint">
 
-.opening button {
+        <div class="blueprint-header">
+          <span>PROJECT : RAYSHA</span>
+          <span>FUTURE ARCHITECT</span>
+        </div>
 
-    border: 1px solid var(--gold);
 
-    background: transparent;
+        <div class="blueprint-content">
 
-    color: white;
+          <div class="floor-plan">
 
-    padding: 15px 28px;
+            <div class="room room-a">
+              LIVING
+              <small>04.20 × 05.00</small>
+            </div>
 
-    cursor: pointer;
+            <div class="room room-b">
+              STUDIO
+              <small>03.50 × 04.00</small>
+            </div>
 
-    text-transform: uppercase;
+            <div class="room room-c">
+              LIBRARY
+              <small>03.00 × 03.50</small>
+            </div>
 
-    letter-spacing: 2px;
+            <div class="room room-d">
+              GARDEN
+            </div>
 
-    font-size: 10px;
+          </div>
 
-    transition: .3s;
 
-}
+          <div class="blueprint-notes">
 
+            <div class="architect-note">
+              <span>CONCEPT</span>
+              <strong>HOME</strong>
+              <p>
+                A space that feels warm,
+                thoughtful and alive.
+              </p>
+            </div>
 
-.opening button:hover {
+            <div class="architect-note">
+              <span>KEY WORDS</span>
 
-    background: var(--gold);
+              <div class="keywords">
+                <b>SPACE</b>
+                <b>LIGHT</b>
+                <b>FORM</b>
+                <b>PEOPLE</b>
+              </div>
+            </div>
 
-    color: var(--navy);
+          </div>
 
-}
+        </div>
 
 
-/* Opening polkadots */
+        <div class="blueprint-footer">
+          <span>DRAWN WITH HOPE</span>
+          <span>01 / 01</span>
+        </div>
 
-.opening-dots {
+      </div>
 
-    position: absolute;
 
-    inset: -100px;
+      <!-- UI -->
+      <div class="ui-card">
 
-    background-image:
-        radial-gradient(
-            var(--blue) 3px,
-            transparent 3.5px
-        );
+        <div class="ui-photo">
+          <img src="assets/ui.jpg" alt="Universitas Indonesia">
+        </div>
 
-    background-size: 30px 30px;
+        <div class="ui-copy">
 
-    opacity: .12;
+          <p class="mini-title">
+            somewhere in the future
+          </p>
 
-    transform: rotate(-8deg);
+          <h3>
+            Faculty of Engineering,<br>
+            Universitas Indonesia.
+          </h3>
 
-}
+          <p>
+            Maybe someday you'll walk through those
+            halls with a sketchbook in your hands,
+            tired after a long studio night,
+            wondering how you somehow got there.
+          </p>
 
+          <div class="stamp">
+            FUTURE ARCHITECT
+          </div>
 
-.opening-line {
+        </div>
 
-    position: absolute;
+      </div>
 
-    bottom: 10%;
+    </section>
 
-    width: 1px;
 
-    height: 60px;
+    <!-- ARCHITECTURE VOCAB -->
+    <section class="vocabulary section">
 
-    background: var(--gold);
+      <div class="section-label">
+        05 / WORDS FOR A BUILDER
+      </div>
 
-}
+      <div class="word-grid">
 
+        <div class="word-card">
+          <span>01</span>
+          <h3>SPACE</h3>
+          <p>
+            Give people somewhere to breathe.
+          </p>
+        </div>
 
-/* =====================================================
-   AMBIENT LIGHT
-===================================================== */
+        <div class="word-card">
+          <span>02</span>
+          <h3>LIGHT</h3>
+          <p>
+            Let good things find their way in.
+          </p>
+        </div>
 
-.ambient-light {
+        <div class="word-card">
+          <span>03</span>
+          <h3>FORM</h3>
+          <p>
+            Turn an idea into something real.
+          </p>
+        </div>
 
-    position: fixed;
+        <div class="word-card">
+          <span>04</span>
+          <h3>FUNCTION</h3>
+          <p>
+            Make beauty mean something.
+          </p>
+        </div>
 
-    width: 300px;
+      </div>
 
-    height: 300px;
+    </section>
 
-    transform: translate(-50%,-50%);
 
-    border-radius: 50%;
+    <!-- QUOTE -->
+    <section class="quote-section section">
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(213,179,106,.09),
-            transparent 65%
-        );
+      <div class="quote-mark">“</div>
 
-    pointer-events: none;
+      <div class="quote-slider">
 
-    z-index: 1;
+        <p class="quote active">
+          Some people become a chapter.
+          You became part of the story.
+        </p>
 
-}
+        <p class="quote">
+          May your future be bigger
+          than the things you are afraid of today.
+        </p>
 
+        <p class="quote">
+          Keep creating places where
+          people feel a little more at home.
+        </p>
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+      </div>
 
-.navbar {
+    </section>
 
-    position: fixed;
 
-    top: 0;
+    <!-- JAR OF WISHES -->
+    <section class="wishes section">
 
-    left: 0;
+      <div class="section-label">
+        06 / A JAR OF WISHES
+      </div>
 
-    width: 100%;
+      <div class="wishes-content">
 
-    height: 80px;
+        <div class="jar-area">
 
-    display: flex;
+          <div class="jar-lid"></div>
 
-    align-items: center;
+          <div class="jar">
 
-    justify-content: space-between;
+            <div class="wish-paper paper-one">hope</div>
+            <div class="wish-paper paper-two">dream</div>
+            <div class="wish-paper paper-three">create</div>
+            <div class="wish-paper paper-four">believe</div>
 
-    padding: 0 5vw;
+          </div>
 
-    z-index: 1000;
+        </div>
 
-    color: white;
 
-    transition: .4s;
+        <div class="wish-copy">
 
-}
+          <p class="mini-title">
+            pick one
+          </p>
 
+          <h2>
+            A little wish<br>
+            for your future.
+          </h2>
 
-.navbar.scrolled {
+          <div class="wish-display" id="wishDisplay">
+            Click the jar.
+          </div>
 
-    background:
-        rgba(248,244,235,.94);
+          <button class="wish-button" id="wishButton">
+            open a wish
+          </button>
 
-    backdrop-filter: blur(14px);
+        </div>
 
-    color: var(--navy);
+      </div>
 
-    box-shadow:
-        0 1px 20px rgba(0,0,0,.05);
+    </section>
 
-}
 
+    <!-- FUTURE LETTER -->
+    <section class="letter-section section" id="letter">
 
-.nav-logo {
+      <div class="section-label">
+        07 / LETTER FROM THE FUTURE
+      </div>
 
-    font-family: var(--serif);
+      <div class="letter-wrapper">
 
-    font-size: 25px;
+        <div class="envelope" id="envelope">
 
-    color: inherit;
+          <div class="envelope-back"></div>
 
-}
+          <div class="letter-paper">
 
+            <p class="letter-date">
+              someday, somewhere
+            </p>
 
-.nav-logo span {
+            <h3>
+              Dear Raysha,
+            </h3>
 
-    color: var(--gold);
+            <p>
+              I hope you're reading this from a place
+              you once dreamed about.
+            </p>
 
-}
+            <p>
+              Maybe there are architectural drawings
+              scattered across your desk.
+              Maybe you've just finished a project
+              you're incredibly proud of.
+            </p>
 
+            <p>
+              I hope you still read books.
+              I hope you still write.
+              I hope you still get excited
+              when a new idea appears in your head.
+            </p>
 
-.navbar nav {
+            <p>
+              And most importantly,
+              I hope you remember the girl
+              who once dreamed about all of this.
+            </p>
 
-    display: flex;
+            <p class="letter-ending">
+              Keep building your life<br>
+              as beautifully as you build your spaces.
+            </p>
 
-    gap: 35px;
+            <p class="signature">
+              always rooting for you.
+            </p>
 
-}
+          </div>
 
+          <div class="envelope-flap"></div>
 
-.navbar nav a {
+        </div>
 
-    color: inherit;
+        <button id="letterButton" class="letter-button">
+          open the letter
+        </button>
 
-    font-size: 10px;
+      </div>
 
-    letter-spacing: 1.5px;
+    </section>
 
-    text-transform: uppercase;
 
-    position: relative;
+    <!-- THINGS I HOPE YOU BUILD -->
+    <section class="build-section section">
 
-}
+      <div class="section-label">
+        08 / THINGS I HOPE YOU BUILD
+      </div>
 
+      <div class="build-grid">
 
-.navbar nav a::after {
+        <div>
+          <span>01</span>
+          <h3>A career you love.</h3>
+        </div>
 
-    content: "";
+        <div>
+          <span>02</span>
+          <h3>A home that feels like yours.</h3>
+        </div>
 
-    position: absolute;
+        <div>
+          <span>03</span>
+          <h3>A life full of stories.</h3>
+        </div>
 
-    left: 0;
+        <div>
+          <span>04</span>
+          <h3>A future you don't have to be afraid of.</h3>
+        </div>
 
-    bottom: -7px;
+      </div>
 
-    width: 0;
+    </section>
 
-    height: 1px;
 
-    background: var(--gold);
+    <!-- ENDING HOUSE -->
+    <section class="ending">
 
-    transition: .3s;
+      <div class="ending-stars">
+        ✦ &nbsp;&nbsp; ✧ &nbsp;&nbsp; ✦
+      </div>
 
-}
+      <div class="ending-house">
 
+        <div class="ending-roof"></div>
 
-.navbar nav a:hover::after {
+        <div class="ending-body">
 
-    width: 100%;
+          <div class="ending-window">
+            <span></span>
+          </div>
 
-}
+          <div class="ending-door"></div>
 
+        </div>
 
-.music-button {
+      </div>
 
-    border: 1px solid currentColor;
 
-    background: transparent;
+      <div class="ending-copy">
 
-    color: inherit;
+        <p class="mini-title">
+          wherever life takes us
+        </p>
 
-    padding: 10px 15px;
+        <h2>
+          I hope you always<br>
+          find your way <i>home.</i>
+        </h2>
 
-    display: flex;
+        <p>
+          Keep dreaming.<br>
+          Keep writing.<br>
+          Keep building.
+        </p>
 
-    align-items: center;
+        <div class="final-name">
+          for Raysha Nazwa Irnawan
+        </div>
 
-    gap: 8px;
+      </div>
 
-    cursor: pointer;
+    </section>
 
-    text-transform: uppercase;
+  </main>
 
-    font-size: 9px;
 
-    letter-spacing: 1px;
+  <footer>
+    made with friendship, memories & a little bit of hope.
+  </footer>
 
-}
 
+  <script src="script.js"></script>
 
-.music-icon {
-
-    color: var(--gold);
-
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero {
-
-    min-height: 100vh;
-
-    background: var(--navy);
-
-    color: white;
-
-    position: relative;
-
-    overflow: hidden;
-
-    display: flex;
-
-    align-items: center;
-
-}
-
-
-.hero-background {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 70% 50%,
-            rgba(77,110,144,.25),
-            transparent 40%
-        );
-
-}
-
-
-.hero-inner {
-
-    width: min(1200px,90%);
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    align-items: center;
-
-    gap: 80px;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.hero-copy {
-
-    position: relative;
-
-    z-index: 3;
-
-}
-
-
-.eyebrow {
-
-    color: var(--gold);
-
-    text-transform: uppercase;
-
-    letter-spacing: 4px;
-
-    font-size: 10px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.hero h1 {
-
-    font-family: var(--serif);
-
-    font-weight: 400;
-
-    font-size: clamp(65px,8vw,115px);
-
-    line-height: .85;
-
-}
-
-
-.hero h1 span {
-
-    display: block;
-
-    font-family: var(--hand);
-
-    color: var(--blue);
-
-    font-size: .8em;
-
-    margin-left: 70px;
-
-}
-
-
-.hero-description {
-
-    max-width: 450px;
-
-    margin-top: 35px;
-
-    color: #b5c2d0;
-
-    line-height: 1.8;
-
-    font-size: 14px;
-
-    opacity: 0;
-
-    transform: translateY(15px);
-
-    transition: 1s;
-
-}
-
-
-.hero-description.loaded {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.hero-link {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-top: 35px;
-
-    color: white;
-
-    border-bottom: 1px solid var(--gold);
-
-    padding-bottom: 8px;
-
-    text-transform: uppercase;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.hero-link span {
-
-    color: var(--gold);
-
-}
-
-
-/* Hero decorative dots */
-
-.hero-polka {
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--blue) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 25px 25px;
-
-    pointer-events: none;
-
-}
-
-
-.hero-polka-one {
-
-    width: 180px;
-
-    height: 180px;
-
-    right: 4%;
-
-    top: 15%;
-
-    opacity: .3;
-
-}
-
-
-.hero-polka-two {
-
-    width: 100px;
-
-    height: 100px;
-
-    left: 4%;
-
-    bottom: 12%;
-
-    opacity: .2;
-
-}
-
-
-/* =====================================================
-   HOUSE
-===================================================== */
-
-.hero-house {
-
-    width: 430px;
-
-    height: 430px;
-
-    position: relative;
-
-    margin: auto;
-
-}
-
-
-.house-glow {
-
-    position: absolute;
-
-    width: 250px;
-
-    height: 250px;
-
-    left: 90px;
-
-    top: 100px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(213,179,106,.16),
-            transparent 65%
-        );
-
-}
-
-
-.house-roof {
-
-    position: absolute;
-
-    width: 300px;
-
-    height: 300px;
-
-    border-left: 2px solid #7189a1;
-
-    border-top: 2px solid #7189a1;
-
-    transform:
-        rotate(45deg)
-        scale(.68);
-
-    left: 65px;
-
-    top: 15px;
-
-}
-
-
-.house-body {
-
-    position: absolute;
-
-    left: 50px;
-
-    bottom: 55px;
-
-    width: 330px;
-
-    height: 220px;
-
-    border: 2px solid #8098af;
-
-    display: flex;
-
-    justify-content: space-around;
-
-    align-items: center;
-
-}
-
-
-.window {
-
-    width: 70px;
-
-    height: 80px;
-
-    border: 2px solid #8098af;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-}
-
-
-.window span {
-
-    border-right: 1px solid #8098af;
-
-}
-
-
-.window span:last-child {
-
-    border: none;
-
-}
-
-
-.front-door {
-
-    width: 70px;
-
-    height: 120px;
-
-    border: 2px solid #8098af;
-
-    position: relative;
-
-    align-self: flex-end;
-
-}
-
-
-.door-knob {
-
-    position: absolute;
-
-    width: 6px;
-
-    height: 6px;
-
-    background: var(--gold);
-
-    border-radius: 50%;
-
-    right: 10px;
-
-    top: 60%;
-
-}
-
-
-.house-ground {
-
-    position: absolute;
-
-    left: 20px;
-
-    right: 20px;
-
-    bottom: 35px;
-
-    height: 1px;
-
-    background: #526d88;
-
-}
-
-
-.house-label {
-
-    position: absolute;
-
-    bottom: 0;
-
-    width: 100%;
-
-    text-align: center;
-
-    font-family: var(--hand);
-
-    font-size: 22px;
-
-    color: var(--gold);
-
-}
-
-
-/* =====================================================
-   HERO BOTTOM
-===================================================== */
-
-.hero-bottom {
-
-    position: absolute;
-
-    bottom: 30px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 10px;
-
-    color: #788ba1;
-
-    text-transform: uppercase;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-}
-
-
-.scroll-line {
-
-    height: 45px;
-
-    width: 1px;
-
-    background: var(--gold);
-
-}
-
-
-/* =====================================================
-   GENERAL
-===================================================== */
-
-section {
-
-    position: relative;
-
-}
-
-
-.house-section,
-.story-section,
-.pages-section,
-.little-section,
-.gallery-section,
-.letter-section {
-
-    padding:
-        150px 8vw;
-
-}
-
-
-.section-heading {
-
-    max-width: 850px;
-
-    margin: auto auto 80px;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.section-heading.centered {
-
-    text-align: center;
-
-}
-
-
-.section-number {
-
-    color: var(--gold);
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 20px;
-
-}
-
-
-.section-heading h2,
-.pages-heading h2 {
-
-    font-family: var(--serif);
-
-    font-weight: 400;
-
-    font-size: clamp(50px,6vw,85px);
-
-    line-height: .95;
-
-}
-
-
-.section-heading h2 em,
-.pages-heading h2 em {
-
-    font-family: var(--hand);
-
-    color: var(--blue);
-
-    font-size: 1.1em;
-
-}
-
-
-.section-intro {
-
-    max-width: 500px;
-
-    color: var(--muted);
-
-    line-height: 1.8;
-
-    margin-top: 30px;
-
-}
-
-
-/* =====================================================
-   FLOOR PLAN
-===================================================== */
-
-.house-section {
-
-    background: var(--cream);
-
-}
-
-
-.house-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    right: -40px;
-    top: 60px;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--navy) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 24px 24px;
-
-    opacity: .18;
-
-    pointer-events: none;
-
-}
-
-
-.house-section::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 80px;
-    height: 80px;
-
-    left: 4%;
-    bottom: 10%;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--gold) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 20px 20px;
-
-    opacity: .4;
-
-    animation:
-        floatingDots 6s ease-in-out infinite;
-
-}
-
-
-.floor-plan {
-
-    width: min(1000px,95%);
-
-    margin: auto;
-
-    border: 1px solid var(--line);
-
-    background: var(--paper);
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.floor-plan-header,
-.floor-plan-footer {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    padding: 15px 20px;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    color: var(--muted);
-
-}
-
-
-.rooms {
-
-    min-height: 500px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    grid-template-rows: 1fr 1fr;
-
-    border-top: 1px solid var(--line);
-
-    border-bottom: 1px solid var(--line);
-
-    position: relative;
-
-}
-
-
-.room {
-
-    background: transparent;
-
-    border: 0;
-
-    border-right: 1px solid var(--line);
-
-    border-bottom: 1px solid var(--line);
-
-    text-align: left;
-
-    padding: 35px;
-
-    cursor: pointer;
-
-    color: var(--ink);
-
-    transition: .4s;
-
-    position: relative;
-
-}
-
-
-.room:nth-child(2n) {
-
-    border-right: 0;
-
-}
-
-
-.room:nth-child(n+3) {
-
-    border-bottom: 0;
-
-}
-
-
-.room:hover {
-
-    background: var(--blue-light);
-
-    transform: scale(.98);
-
-}
-
-
-.room-number {
-
-    display: block;
-
-    font-size: 9px;
-
-    color: var(--gold);
-
-    letter-spacing: 2px;
-
-}
-
-
-.room strong {
-
-    display: block;
-
-    font-family: var(--serif);
-
-    font-size: 30px;
-
-    font-weight: 400;
-
-    margin-top: 40px;
-
-}
-
-
-.room small {
-
-    display: block;
-
-    color: var(--muted);
-
-    margin-top: 8px;
-
-    font-family: var(--hand);
-
-    font-size: 20px;
-
-}
-
-
-.floor-door {
-
-    position: absolute;
-
-    width: 70px;
-
-    height: 12px;
-
-    background: var(--paper);
-
-    bottom: -6px;
-
-    left: calc(50% - 35px);
-
-}
-
-
-/* =====================================================
-   STORY
-===================================================== */
-
-.story-section {
-
-    background: var(--blue-light);
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 100px;
-
-    align-items: center;
-
-}
-
-
-.story-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    left: -40px;
-    top: 15%;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--navy) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 22px 22px;
-
-    opacity: .14;
-
-}
-
-
-.story-image {
-
-    opacity: 0;
-
-    transform: translateX(-40px);
-
-    transition: 1s;
-
-}
-
-
-.story-image.visible {
-
-    opacity: 1;
-
-    transform: translateX(0);
-
-}
-
-
-.image-frame {
-
-    position: relative;
-
-    padding: 14px;
-
-    background: white;
-
-    box-shadow:
-        12px 12px 0 var(--navy);
-
-    transform: rotate(-2deg);
-
-}
-
-
-.image-frame img {
-
-    height: 520px;
-
-    object-fit: cover;
-
-}
-
-
-.image-caption {
-
-    display: block;
-
-    font-family: var(--hand);
-
-    font-size: 20px;
-
-    padding: 15px 5px 5px;
-
-}
-
-
-.story-content {
-
-    opacity: 0;
-
-    transform: translateY(40px);
-
-    transition: 1s .1s;
-
-}
-
-
-.story-content.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.story-content h2 {
-
-    font-family: var(--serif);
-
-    font-weight: 400;
-
-    font-size: clamp(50px,5vw,75px);
-
-    line-height: .95;
-
-    margin-bottom: 35px;
-
-}
-
-
-.story-content h2 em {
-
-    font-family: var(--hand);
-
-    color: var(--gold);
-
-}
-
-
-.story-content > p:not(.section-number) {
-
-    max-width: 500px;
-
-    color: var(--muted);
-
-    line-height: 1.9;
-
-    margin-bottom: 20px;
-
-}
-
-
-.handwritten {
-
-    font-family: var(--hand);
-
-    font-size: 27px;
-
-    color: var(--navy);
-
-    max-width: 450px;
-
-    margin-top: 40px;
-
-    border-left: 2px solid var(--gold);
-
-    padding-left: 20px;
-
-}
-
-
-/* =====================================================
-   PAGES
-===================================================== */
-
-.pages-section {
-
-    background: var(--cream);
-
-}
-
-
-.pages-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    left: -50px;
-    top: 100px;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--navy) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 24px 24px;
-
-    opacity: .15;
-
-}
-
-
-.pages-section::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    right: 5%;
-    bottom: 10%;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--gold) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 20px 20px;
-
-    opacity: .45;
-
-    animation:
-        floatingDots 6s ease-in-out infinite;
-
-}
-
-
-.pages-heading {
-
-    max-width: 900px;
-
-    margin: auto auto 80px;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.book-layout {
-
-    max-width: 1050px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 100px;
-
-    align-items: center;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.book {
-
-    position: relative;
-
-    min-height: 480px;
-
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition: 1s;
-
-}
-
-
-.book.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.book-page {
-
-    position: absolute;
-
-    width: 320px;
-
-    min-height: 430px;
-
-    background: var(--paper);
-
-    padding: 35px;
-
-    border: 1px solid var(--line);
-
-    box-shadow:
-        10px 12px 0 rgba(8,27,53,.08);
-
-}
-
-
-.book-page:first-child {
-
-    transform: rotate(-4deg);
-
-    z-index: 2;
-
-}
-
-
-.book-page-back {
-
-    left: 60px;
-
-    top: 30px;
-
-    transform: rotate(4deg);
-
-    background: #e9eef2;
-
-}
-
-
-.book-label {
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    color: var(--gold);
-
-}
-
-
-.book-page h3 {
-
-    font-family: var(--hand);
-
-    font-size: 75px;
-
-    font-weight: 500;
-
-    margin-top: 80px;
-
-}
-
-
-.book-page p {
-
-    font-family: var(--serif);
-
-    font-style: italic;
-
-    line-height: 1.8;
-
-}
-
-
-.page-line {
-
-    width: 50px;
-
-    height: 1px;
-
-    background: var(--gold);
-
-    margin-top: 50px;
-
-}
-
-
-.page-number {
-
-    position: absolute;
-
-    bottom: 25px;
-
-    right: 30px;
-
-    font-size: 10px;
-
-}
-
-
-.handwritten-book {
-
-    font-family: var(--hand) !important;
-
-    font-size: 28px;
-
-    margin-top: 100px;
-
-}
-
-
-.pages-copy {
-
-    opacity: 0;
-
-    transform: translateY(40px);
-
-    transition: 1s;
-
-}
-
-
-.pages-copy.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.pages-copy > p {
-
-    font-family: var(--serif);
-
-    font-size: 20px;
-
-    line-height: 1.8;
-
-    margin-bottom: 25px;
-
-}
-
-
-.small-note {
-
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 15px 20px;
-
-    background: #e6d6a5;
-
-    font-family: var(--hand);
-
-    font-size: 22px;
-
-    transform: rotate(-2deg);
-
-}
-
-
-/* =====================================================
-   LITTLE THINGS
-===================================================== */
-
-.little-section {
-
-    background: var(--blue-light);
-
-}
-
-
-.little-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    right: -60px;
-    bottom: 80px;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--navy) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 24px 24px;
-
-    opacity: .15;
-
-}
-
-
-.memory-grid {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        1.3fr 1fr 1fr;
-
-    grid-template-rows:
-        1fr 1fr;
-
-    gap: 20px;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.memory-card {
-
-    background: var(--paper);
-
-    padding: 35px;
-
-    min-height: 260px;
-
-    border: 1px solid var(--line);
-
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition: .8s;
-
-}
-
-
-.memory-card.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.card-large {
-
-    grid-row: span 2;
-
-    background: var(--navy);
-
-    color: white;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: space-between;
-
-}
-
-
-.memory-card > span {
-
-    color: var(--gold);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.memory-card h3 {
-
-    font-family: var(--serif);
-
-    font-size: 30px;
-
-    font-weight: 400;
-
-    line-height: 1.1;
-
-    margin-top: 25px;
-
-}
-
-
-.card-large h3 {
-
-    font-size: 48px;
-
-}
-
-
-.memory-card p {
-
-    color: var(--muted);
-
-    line-height: 1.7;
-
-    margin-top: 20px;
-
-}
-
-
-.card-large p {
-
-    color: #aab9ca;
-
-}
-
-
-.image-card {
-
-    padding: 0;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-.image-card img {
-
-    height: 100%;
-
-    object-fit: cover;
-
-    filter: saturate(.75);
-
-}
-
-
-.image-card div {
-
-    position: absolute;
-
-    bottom: 15px;
-
-    left: 15px;
-
-    background: var(--paper);
-
-    padding: 8px 12px;
-
-    font-family: var(--hand);
-
-    font-size: 19px;
-
-}
-
-
-/* =====================================================
-   DREAM
-===================================================== */
-
-.dream-section {
-
-    padding: 150px 8vw;
-
-    background: var(--navy);
-
-    color: white;
-
-    overflow: hidden;
-
-}
-
-
-.dream-top {
-
-    max-width: 1100px;
-
-    margin: auto auto 80px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: end;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.section-number.light {
-
-    color: var(--gold);
-
-}
-
-
-.dream-top h2 {
-
-    font-family: var(--serif);
-
-    font-weight: 400;
-
-    font-size: clamp(55px,7vw,95px);
-
-    line-height: .9;
-
-}
-
-
-.dream-top h2 em {
-
-    font-family: var(--hand);
-
-    color: var(--blue);
-
-}
-
-
-.dream-intro {
-
-    width: 280px;
-
-    color: #aab9ca;
-
-    line-height: 1.8;
-
-}
-
-
-.dream-polka {
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--blue) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 25px 25px;
-
-    opacity: .25;
-
-}
-
-
-.dream-polka-one {
-
-    width: 180px;
-
-    height: 180px;
-
-    right: -40px;
-
-    top: 10%;
-
-}
-
-
-.dream-polka-two {
-
-    width: 100px;
-
-    height: 100px;
-
-    left: 3%;
-
-    bottom: 5%;
-
-}
-
-
-/* =====================================================
-   BLUEPRINT
-===================================================== */
-
-.blueprint {
-
-    max-width: 1100px;
-
-    min-height: 600px;
-
-    margin: auto;
-
-    position: relative;
-
-    border: 1px solid #6685a5;
-
-    overflow: hidden;
-
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition: 1s;
-
-}
-
-
-.blueprint.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.blueprint-grid {
-
-    position: absolute;
-
-    inset: 0;
-
-    background-image:
-        linear-gradient(
-            rgba(130,170,205,.13) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(130,170,205,.13) 1px,
-            transparent 1px
-        );
-
-    background-size: 40px 40px;
-
-}
-
-
-.blueprint-meta {
-
-    position: absolute;
-
-    top: 20px;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    color: #7f9ab5;
-
-}
-
-
-.top-left {
-
-    left: 20px;
-
-}
-
-
-.top-right {
-
-    right: 20px;
-
-}
-
-
-.blueprint-house {
-
-    position: absolute;
-
-    left: 50%;
-
-    top: 50%;
-
-    transform:
-        translate(-50%,-45%);
-
-    width: 360px;
-
-    height: 300px;
-
-}
-
-
-.blueprint-roof {
-
-    position: absolute;
-
-    width: 260px;
-
-    height: 260px;
-
-    border-left: 2px solid #8eb0ce;
-
-    border-top: 2px solid #8eb0ce;
-
-    transform:
-        rotate(45deg)
-        scale(.7);
-
-    left: 50px;
-
-    top: -30px;
-
-}
-
-
-.blueprint-building {
-
-    position: absolute;
-
-    left: 20px;
-
-    bottom: 0;
-
-    width: 320px;
-
-    height: 210px;
-
-    border: 2px solid #8eb0ce;
-
-    display: flex;
-
-    justify-content: space-around;
-
-    align-items: center;
-
-}
-
-
-.blue-window {
-
-    width: 55px;
-
-    height: 75px;
-
-    border: 2px solid #8eb0ce;
-
-}
-
-
-.blue-door {
-
-    position: absolute;
-
-    bottom: 0;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 65px;
-
-    height: 105px;
-
-    border: 2px solid #8eb0ce;
-
-}
-
-
-.blueprint-note {
-
-    position: absolute;
-
-    font-family: var(--hand);
-
-    color: var(--gold);
-
-    font-size: 22px;
-
-    border-bottom: 1px dashed #6685a5;
-
-    padding-bottom: 7px;
-
-}
-
-
-.blueprint-note span {
-
-    display: block;
-
-    font-size: 30px;
-
-}
-
-
-.note-left {
-
-    left: 12%;
-
-    top: 40%;
-
-}
-
-
-.note-right {
-
-    right: 10%;
-
-    top: 32%;
-
-}
-
-
-.blueprint-bottom {
-
-    position: absolute;
-
-    bottom: 20px;
-
-    right: 20px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    text-align: right;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    color: #7692ae;
-
-}
-
-
-.blueprint-bottom strong {
-
-    color: var(--gold);
-
-    margin-top: 5px;
-
-}
-
-
-/* =====================================================
-   DREAM LETTER
-===================================================== */
-
-.dream-letter {
-
-    max-width: 700px;
-
-    margin: 90px auto 0;
-
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition: 1s;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.dream-letter.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.dream-letter p {
-
-    color: #aebccc;
-
-    line-height: 1.9;
-
-    margin-bottom: 20px;
-
-}
-
-
-.dream-quote {
-
-    font-family: var(--serif);
-
-    font-style: italic;
-
-    color: var(--gold);
-
-    font-size: 28px;
-
-    margin-top: 45px;
-
-    padding-left: 25px;
-
-    border-left: 1px solid var(--gold);
-
-}
-
-
-/* =====================================================
-   UI PHOTO
-===================================================== */
-
-.ui-photo {
-
-    width: min(700px,100%);
-
-    margin: 100px auto 0;
-
-    opacity: 0;
-
-    transform: translateY(30px);
-
-    transition: 1s;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.ui-photo.visible {
-
-    opacity: 1;
-
-    transform: translateY(0);
-
-}
-
-
-.ui-photo img {
-
-    height: 420px;
-
-    object-fit: cover;
-
-    filter: saturate(.7);
-
-}
-
-
-.ui-photo div {
-
-    padding: 15px;
-
-    color: #91a4b9;
-
-    font-family: var(--hand);
-
-    font-size: 24px;
-
-    text-align: center;
-
-}
-
-
-/* =====================================================
-   GALLERY
-===================================================== */
-
-.gallery-section {
-
-    background: var(--cream);
-
-}
-
-
-.gallery-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 170px;
-    height: 170px;
-
-    right: 8%;
-    top: 30px;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--navy) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 24px 24px;
-
-    opacity: .15;
-
-}
-
-
-.gallery-section::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 90px;
-    height: 90px;
-
-    left: 8%;
-    top: 15%;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--gold) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 20px 20px;
-
-    opacity: .45;
-
-    animation:
-        floatingDots 6s ease-in-out infinite;
-
-}
-
-
-.photo-wall {
-
-    max-width: 1000px;
-
-    min-height: 600px;
-
-    margin: auto;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.photo {
-
-    position: absolute;
-
-    background: white;
-
-    padding: 12px 12px 45px;
-
-    box-shadow:
-        8px 10px 0 rgba(8,27,53,.12);
-
-    opacity: 0;
-
-    transition: 1s;
-
-}
-
-
-.photo.visible {
-
-    opacity: 1;
-
-}
-
-
-.photo img {
-
-    width: 100%;
-
-    height: 300px;
-
-    object-fit: cover;
-
-}
-
-
-.photo figcaption {
-
-    position: absolute;
-
-    bottom: 12px;
-
-    left: 15px;
-
-    font-family: var(--hand);
-
-    font-size: 21px;
-
-}
-
-
-.photo-one {
-
-    width: 430px;
-
-    left: 5%;
-
-    top: 40px;
-
-    transform: rotate(-4deg);
-
-}
-
-
-.photo-two {
-
-    width: 330px;
-
-    right: 8%;
-
-    top: 160px;
-
-    transform: rotate(5deg);
-
-}
-
-
-.wall-note {
-
-    position: absolute;
-
-    right: 20%;
-
-    bottom: 20px;
-
-    width: 230px;
-
-    padding: 25px;
-
-    background: #e6d6a5;
-
-    transform: rotate(-3deg);
-
-    box-shadow:
-        5px 6px 0 rgba(8,27,53,.12);
-
-    opacity: 0;
-
-    transition: 1s;
-
-}
-
-
-.wall-note.visible {
-
-    opacity: 1;
-
-}
-
-
-.wall-note span {
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.wall-note p {
-
-    font-family: var(--hand);
-
-    font-size: 23px;
-
-    line-height: 1.2;
-
-    margin-top: 20px;
-
-}
-
-
-/* =====================================================
-   LETTER
-===================================================== */
-
-.letter-section {
-
-    background: var(--blue-light);
-
-}
-
-
-.letter-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: -30px;
-    top: 15%;
-
-    border-radius: 50%;
-
-    background-image:
-        radial-gradient(
-            var(--navy) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 22px 22px;
-
-    opacity: .14;
-
-}
-
-
-.letter-paper {
-
-    max-width: 800px;
-
-    margin: auto;
-
-    background: var(--paper);
-
-    padding: 80px;
-
-    box-shadow:
-        12px 14px 0 var(--navy);
-
-    opacity: 0;
-
-    transform:
-        translateY(40px)
-        rotate(1deg);
-
-    transition: 1s;
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.letter-paper.visible {
-
-    opacity: 1;
-
-    transform:
-        translateY(0)
-        rotate(1deg);
-
-}
-
-
-.letter-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-    color: var(--gold);
-
-    margin-bottom: 70px;
-
-}
-
-
-.letter-paper h2 {
-
-    font-family: var(--hand);
-
-    font-size: 75px;
-
-    font-weight: 500;
-
-    margin-bottom: 35px;
-
-}
-
-
-.letter-body p {
-
-    font-family: var(--serif);
-
-    font-size: 18px;
-
-    line-height: 2;
-
-    margin-bottom: 25px;
-
-}
-
-
-.letter-signature {
-
-    margin-top: 60px;
-
-    text-align: right;
-
-    font-family: var(--hand);
-
-}
-
-
-.letter-signature span {
-
-    display: block;
-
-    font-size: 20px;
-
-}
-
-
-.letter-signature strong {
-
-    display: block;
-
-    font-size: 32px;
-
-    color: var(--navy);
-
-    margin-top: 5px;
-
-}
-
-
-/* =====================================================
-   ENDING
-===================================================== */
-
-.ending {
-
-    min-height: 100vh;
-
-    background: var(--navy);
-
-    color: white;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    align-items: center;
-
-    gap: 60px;
-
-    padding: 100px 8vw;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-.ending-polka {
-
-    position: absolute;
-
-    width: 200px;
-    height: 200px;
-
-    right: -30px;
-    top: 8%;
-
-    background-image:
-        radial-gradient(
-            var(--blue) 3px,
-            transparent 3.5px
-        );
-
-    background-size: 25px 25px;
-
-    opacity: .18;
-
-}
-
-
-.ending-window {
-
-    width: 500px;
-
-    height: 430px;
-
-    border:
-        1px solid #46637f;
-
-    margin: auto;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-.night-sky {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            #07172c,
-            #122c4d
-        );
-
-}
-
-
-.star {
-
-    position: absolute;
-
-    width: 3px;
-
-    height: 3px;
-
-    background: var(--gold);
-
-    border-radius: 50%;
-
-}
-
-
-.star-one {
-    left: 20%;
-    top: 25%;
-}
-
-.star-two {
-    left: 65%;
-    top: 20%;
-}
-
-.star-three {
-    left: 78%;
-    top: 50%;
-}
-
-.star-four {
-    left: 40%;
-    top: 12%;
-}
-
-.star-five {
-    left: 85%;
-    top: 30%;
-}
-
-
-.ending-house {
-
-    position: absolute;
-
-    bottom: 60px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 300px;
-
-}
-
-
-.ending-roof {
-
-    width: 210px;
-
-    height: 210px;
-
-    border-left:
-        2px solid var(--gold);
-
-    border-top:
-        2px solid var(--gold);
-
-    transform:
-        rotate(45deg)
-        scale(.65);
-
-    margin: auto;
-
-}
-
-
-.ending-body {
-
-    width: 280px;
-
-    height: 180px;
-
-    border:
-        2px solid var(--gold);
-
-    display: flex;
-
-    justify-content: space-around;
-
-    align-items: center;
-
-}
-
-
-.ending-window {
-
-    width: 50px;
-
-    height: 60px;
-
-    border:
-        1px solid var(--gold);
-
-}
-
-
-.ending-door {
-
-    width: 55px;
-
-    height: 90px;
-
-    border:
-        1px solid var(--gold);
-
-    align-self: flex-end;
-
-}
-
-
-.ending-copy p {
-
-    color: var(--gold);
-
-    text-transform: uppercase;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 25px;
-
-}
-
-
-.ending-copy h2 {
-
-    font-family: var(--serif);
-
-    font-size: clamp(60px,7vw,95px);
-
-    font-weight: 400;
-
-    line-height: .9;
-
-}
-
-
-.ending-copy h2 em {
-
-    font-family: var(--hand);
-
-    color: var(--blue);
-
-}
-
-
-.ending-words {
-
-    font-family: var(--serif);
-
-    font-size: 22px;
-
-    line-height: 1.8;
-
-    color: #b6c3d0;
-
-    margin-top: 35px;
-
-}
-
-
-.ending-line {
-
-    display: block;
-
-    font-family: var(--hand);
-
-    font-size: 24px;
-
-    color: #8ca2b9;
-
-    margin-top: 40px;
-
-    max-width: 400px;
-
-}
-
-
-/* =====================================================
-   MUSIC PLAYER
-===================================================== */
-
-.music-player {
-
-    position: fixed;
-
-    right: 25px;
-
-    bottom: 25px;
-
-    z-index: 1500;
-
-    width: 250px;
-
-    padding: 15px;
-
-    background:
-        rgba(255,253,248,.96);
-
-    border: 1px solid var(--line);
-
-    box-shadow:
-        5px 6px 0 rgba(8,27,53,.12);
-
-    display: grid;
-
-    grid-template-columns: 1fr 40px;
-
-    gap: 12px;
-
-}
-
-
-.music-info {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.music-status {
-
-    font-size: 7px;
-
-    letter-spacing: 2px;
-
-    color: var(--gold);
-
-}
-
-
-.music-info strong {
-
-    font-family: var(--hand);
-
-    font-size: 20px;
-
-    font-weight: 500;
-
-}
-
-
-.music-player button {
-
-    border: 1px solid var(--navy);
-
-    background: var(--navy);
-
-    color: white;
-
-    cursor: pointer;
-
-}
-
-
-.progress-container {
-
-    grid-column: 1 / -1;
-
-    height: 2px;
-
-    background: #d9dce0;
-
-}
-
-
-.progress {
-
-    width: 0;
-
-    height: 100%;
-
-    background: var(--gold);
-
-}
-
-
-/* =====================================================
-   FLOATING DOT ANIMATION
-===================================================== */
-
-@keyframes floatingDots {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-18px)
-            rotate(5deg);
-
-    }
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:900px){
-
-    .navbar nav {
-
-        display: none;
-
-    }
-
-
-    .hero-inner {
-
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-        padding-top: 100px;
-
-    }
-
-
-    .hero-description {
-
-        margin-left: auto;
-
-        margin-right: auto;
-
-    }
-
-
-    .hero h1 span {
-
-        margin-left: 0;
-
-    }
-
-
-    .hero-house {
-
-        width: 330px;
-
-        height: 330px;
-
-    }
-
-
-    .house-body {
-
-        left: 25px;
-
-        width: 280px;
-
-        height: 180px;
-
-    }
-
-
-    .house-roof {
-
-        left: 15px;
-
-        top: 0;
-
-    }
-
-
-    .story-section,
-    .book-layout,
-    .ending {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .story-image {
-
-        order: 2;
-
-    }
-
-
-    .memory-grid {
-
-        grid-template-columns: 1fr 1fr;
-
-    }
-
-
-    .card-large {
-
-        grid-row: auto;
-
-    }
-
-
-    .dream-top {
-
-        display: block;
-
-    }
-
-
-    .dream-intro {
-
-        margin-top: 30px;
-
-    }
-
-
-    .photo-wall {
-
-        min-height: 900px;
-
-    }
-
-}
-
-
-@media(max-width:600px){
-
-    .navbar {
-
-        height: 65px;
-
-        padding: 0 20px;
-
-    }
-
-
-    .music-button {
-
-        display: none;
-
-    }
-
-
-    .hero {
-
-        min-height: 900px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size: 70px;
-
-    }
-
-
-    .hero-house {
-
-        transform: scale(.8);
-
-        margin-top: -20px;
-
-    }
-
-
-    .house-section,
-    .story-section,
-    .pages-section,
-    .little-section,
-    .gallery-section,
-    .letter-section,
-    .dream-section {
-
-        padding:
-            100px 25px;
-
-    }
-
-
-    .rooms {
-
-        min-height: 650px;
-
-        grid-template-columns: 1fr;
-
-        grid-template-rows:
-            repeat(4,1fr);
-
-    }
-
-
-    .room {
-
-        border-right: 0;
-
-    }
-
-
-    .room:nth-child(3) {
-
-        border-bottom:
-            1px solid var(--line);
-
-    }
-
-
-    .room:nth-child(4) {
-
-        border-bottom: 0;
-
-    }
-
-
-    .floor-door {
-
-        display: none;
-
-    }
-
-
-    .image-frame img {
-
-        height: 380px;
-
-    }
-
-
-    .book {
-
-        min-height: 450px;
-
-        transform: scale(.85);
-
-        transform-origin: center;
-
-        margin-bottom: -30px;
-
-    }
-
-
-    .memory-grid {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .card-large {
-
-        min-height: 350px;
-
-    }
-
-
-    .blueprint {
-
-        min-height: 480px;
-
-    }
-
-
-    .blueprint-house {
-
-        transform:
-            translate(-50%,-45%)
-            scale(.7);
-
-    }
-
-
-    .blueprint-note {
-
-        font-size: 17px;
-
-    }
-
-
-    .blueprint-note span {
-
-        font-size: 23px;
-
-    }
-
-
-    .note-left {
-
-        left: 5%;
-
-    }
-
-
-    .note-right {
-
-        right: 5%;
-
-    }
-
-
-    .ui-photo img {
-
-        height: 300px;
-
-    }
-
-
-    .photo-one {
-
-        width: 300px;
-
-        left: 0;
-
-    }
-
-
-    .photo-two {
-
-        width: 250px;
-
-        right: 0;
-
-        top: 350px;
-
-    }
-
-
-    .wall-note {
-
-        right: 20px;
-
-        bottom: 0;
-
-    }
-
-
-    .letter-paper {
-
-        padding: 45px 25px;
-
-    }
-
-
-    .letter-paper h2 {
-
-        font-size: 60px;
-
-    }
-
-
-    .letter-body p {
-
-        font-size: 16px;
-
-    }
-
-
-    .ending-window {
-
-        width: 100%;
-
-        height: 350px;
-
-    }
-
-
-    .ending-house {
-
-        transform:
-            translateX(-50%)
-            scale(.75);
-
-        transform-origin: bottom center;
-
-    }
-
-
-    .ending-copy h2 {
-
-        font-size: 65px;
-
-    }
-
-
-    .music-player {
-
-        width: 210px;
-
-        right: 15px;
-
-        bottom: 15px;
-
-    }
-
-}
+</body>
+</html>
