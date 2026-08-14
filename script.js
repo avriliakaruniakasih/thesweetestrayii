@@ -5,7 +5,7 @@
 
 
 /* =========================================================
-   1. SCROLL REVEAL
+   1. REVEAL ANIMATION
    ========================================================= */
 
 const revealItems = document.querySelectorAll(".reveal");
@@ -19,7 +19,7 @@ const revealObserver = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.15
+    threshold: 0.12
   }
 );
 
@@ -29,38 +29,10 @@ revealItems.forEach((item) => {
 
 
 /* =========================================================
-   2. SMOOTH SCROLL
+   2. LIGHTS ON / OFF
    ========================================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-
-  link.addEventListener("click", function (event) {
-
-    const targetId = this.getAttribute("href");
-
-    if (!targetId || targetId === "#") return;
-
-    const target = document.querySelector(targetId);
-
-    if (target) {
-      event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-
-  });
-
-});
-
-
-/* =========================================================
-   3. LIGHTS OFF MODE
-   ========================================================= */
-
-const lightsButton = document.querySelector("#lightsButton");
+const lightsButton = document.querySelector(".lights-button");
 
 if (lightsButton) {
 
@@ -68,15 +40,13 @@ if (lightsButton) {
 
     document.body.classList.toggle("lights-off");
 
-    if (document.body.classList.contains("lights-off")) {
+    const isOff =
+      document.body.classList.contains("lights-off");
 
-      lightsButton.textContent = "Turn the lights on";
-
-    } else {
-
-      lightsButton.textContent = "Lights off";
-
-    }
+    lightsButton.textContent =
+      isOff
+        ? "turn the lights on"
+        : "turn the lights off";
 
   });
 
@@ -84,54 +54,110 @@ if (lightsButton) {
 
 
 /* =========================================================
-   4. TEA TIME NOTES
+   3. MUSIC PLAYER
    ========================================================= */
 
-const notes = document.querySelectorAll(".note");
+const musicButton =
+  document.querySelector(".music-button");
 
-const teaMessage = document.querySelector("#teaMessage");
+const audio =
+  document.querySelector("#background-music");
 
-const teaMessages = [
+let musicPlaying = false;
 
-  "You don't have to carry everything alone.",
 
-  "When life gets heavy, talk to someone you trust.",
+if (musicButton && audio) {
 
-  "Some days only need a little rest, not a perfect answer.",
+  musicButton.addEventListener("click", async () => {
 
-  "A good friend can make an ordinary afternoon feel like home.",
+    try {
 
-  "You are allowed to pause before continuing.",
+      if (!musicPlaying) {
 
-  "There is no shame in saying, 'I need someone today.'"
+        await audio.play();
 
+        musicPlaying = true;
+
+        musicButton.textContent =
+          "pause our song";
+
+      } else {
+
+        audio.pause();
+
+        musicPlaying = false;
+
+        musicButton.textContent =
+          "play our song";
+
+      }
+
+    } catch (error) {
+
+      console.log(
+        "Audio belum bisa diputar:",
+        error
+      );
+
+      musicButton.textContent =
+        "tap again";
+
+    }
+
+  });
+
+
+  audio.addEventListener(
+    "ended",
+    () => {
+
+      musicPlaying = false;
+
+      musicButton.textContent =
+        "play our song";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   4. MEMORY WALL
+   ========================================================= */
+
+const memoryBoxes =
+  document.querySelectorAll(".memory-box");
+
+const memoryOutput =
+  document.querySelector(".memory-output");
+
+
+const memories = [
+  "Some friendships feel like a room you can always come home to.",
+  "There are conversations we remember long after the words are gone.",
+  "Maybe growing up is simply learning how to carry the people we love.",
+  "Some chapters end. The good ones leave the door unlocked."
 ];
 
 
-notes.forEach((note, index) => {
+memoryBoxes.forEach((box, index) => {
 
-  note.addEventListener("click", () => {
+  box.addEventListener("click", () => {
 
-    notes.forEach((item) => {
-      item.classList.remove("active");
-    });
+    if (!memoryOutput) return;
 
-    note.classList.add("active");
+    memoryOutput.style.opacity = "0";
 
-    if (teaMessage) {
+    setTimeout(() => {
 
-      teaMessage.style.opacity = "0";
+      memoryOutput.textContent =
+        memories[index] ||
+        "Some memories are better kept quietly.";
 
-      setTimeout(() => {
+      memoryOutput.style.opacity = "1";
 
-        teaMessage.textContent =
-          teaMessages[index % teaMessages.length];
-
-        teaMessage.style.opacity = "1";
-
-      }, 200);
-
-    }
+    }, 180);
 
   });
 
@@ -142,36 +168,34 @@ notes.forEach((note, index) => {
    5. WISH JAR
    ========================================================= */
 
-const wishButton = document.querySelector("#wishButton");
+const wishButton =
+  document.querySelector(".wish-button");
 
-const wishText = document.querySelector("#wishText");
+const wishText =
+  document.querySelector(".wish-text");
 
 
 const wishes = [
 
-  "May you always find courage in the things you create.",
+  "May you find courage for the rooms you have not entered yet.",
 
-  "May your ideas grow into places people will someday call home.",
+  "May your ideas become places where people feel safe.",
 
-  "May you never lose the part of you that loves stories.",
+  "May you never lose the part of you that loves beautiful words.",
 
-  "May your future be full of rooms you designed yourself.",
+  "May every difficult season lead you somewhere gentler.",
 
-  "May every difficult season teach you something gentle.",
+  "May the future meet you with doors you are ready to open.",
 
-  "May you meet people who make the world feel a little kinder.",
+  "May your dreams grow slowly, surely, and beautifully.",
 
-  "May your name someday stand beside something you built with love.",
+  "May you always remember that you don't have to figure everything out at once.",
 
-  "May you keep writing, even when the page feels empty.",
+  "May you build a life that feels like home.",
 
-  "May you become the architect of a life that feels truly yours.",
+  "May you keep reading, writing, wondering, and becoming.",
 
-  "May you always have somewhere to return to.",
-
-  "May your dreams stay bigger than your fears.",
-
-  "May the girl with all these dreams grow into someone she is proud to be."
+  "And when life feels too heavy, may you remember that you don't have to carry it alone."
 
 ];
 
@@ -188,7 +212,9 @@ if (wishButton && wishText) {
     do {
 
       randomIndex =
-        Math.floor(Math.random() * wishes.length);
+        Math.floor(
+          Math.random() * wishes.length
+        );
 
     } while (
       randomIndex === lastWish &&
@@ -198,106 +224,21 @@ if (wishButton && wishText) {
     lastWish = randomIndex;
 
     wishText.style.opacity = "0";
-    wishText.style.transform = "translateY(8px)";
+
+    wishText.style.transform =
+      "translateY(8px)";
 
     setTimeout(() => {
 
-      wishText.textContent = wishes[randomIndex];
+      wishText.textContent =
+        wishes[randomIndex];
 
       wishText.style.opacity = "1";
-      wishText.style.transform = "translateY(0)";
 
-    }, 250);
+      wishText.style.transform =
+        "translateY(0)";
 
-  });
-
-}
-
-
-/* =========================================================
-   6. MEMORY BOXES
-   ========================================================= */
-
-const memoryBoxes =
-  document.querySelectorAll(".memory-box");
-
-const memoryOutput =
-  document.querySelector("#memoryOutput");
-
-
-const memoryMessages = [
-
-  "some memories never really leave the house.",
-
-  "there are conversations we remember without remembering every word.",
-
-  "some people become part of the architecture of our lives.",
-
-  "the smallest moments often become the rooms we visit most.",
-
-  "perhaps growing up is simply collecting places to remember."
-
-];
-
-
-memoryBoxes.forEach((box, index) => {
-
-  box.addEventListener("click", () => {
-
-    memoryBoxes.forEach((item) => {
-      item.style.transform = "";
-    });
-
-    box.style.transform =
-      "translateY(-10px) rotate(2deg)";
-
-    if (memoryOutput) {
-
-      memoryOutput.textContent =
-        memoryMessages[index % memoryMessages.length];
-
-    }
-
-  });
-
-});
-
-
-/* =========================================================
-   7. ARCHITECTURE HOUSE
-   ========================================================= */
-
-const architectHouse =
-  document.querySelector(".architect-house");
-
-if (architectHouse) {
-
-  architectHouse.addEventListener("mousemove", (event) => {
-
-    const rect =
-      architectHouse.getBoundingClientRect();
-
-    const x =
-      event.clientX - rect.left;
-
-    const y =
-      event.clientY - rect.top;
-
-    const moveX =
-      (x / rect.width - 0.5) * 8;
-
-    const moveY =
-      (y / rect.height - 0.5) * 8;
-
-    architectHouse.style.transform =
-      `translate(${moveX}px, ${moveY}px)`;
-
-  });
-
-  architectHouse.addEventListener("mouseleave", () => {
-
-    architectHouse.style.transform =
-      "translate(0, 0)";
+    }, 200);
 
   });
 
@@ -305,29 +246,29 @@ if (architectHouse) {
 
 
 /* =========================================================
-   8. FLOWER WISHES
+   6. FLOWER WISH
    ========================================================= */
 
 const flowers =
   document.querySelectorAll(".flower");
 
 const flowerWish =
-  document.querySelector("#flowerWish");
+  document.querySelector(".flower-wish");
 
 
 const flowerMessages = [
 
-  "For the dreamer who turns blank pages into possibilities.",
+  "for the girl who keeps turning ideas into possibilities.",
 
-  "For every building you have imagined before it existed.",
+  "for every little dream that has not found its shape yet.",
 
-  "For the stories you will write in places you haven't seen yet.",
+  "for the future architect with a heart full of stories.",
 
-  "For the courage to begin again whenever you need to.",
+  "for all the places you will create someday.",
 
-  "For the future version of you who will look back and smile.",
+  "for the version of you who will look back and be proud.",
 
-  "For every little dream that refuses to disappear."
+  "for every quiet effort that nobody else gets to see."
 
 ];
 
@@ -343,11 +284,13 @@ flowers.forEach((flower, index) => {
     setTimeout(() => {
 
       flowerWish.textContent =
-        flowerMessages[index % flowerMessages.length];
+        flowerMessages[
+          index % flowerMessages.length
+        ];
 
       flowerWish.style.opacity = "1";
 
-    }, 200);
+    }, 180);
 
   });
 
@@ -355,264 +298,304 @@ flowers.forEach((flower, index) => {
 
 
 /* =========================================================
-   9. FUTURE LETTER
+   7. FUTURE LETTER MODAL
    ========================================================= */
 
 const letterButton =
-  document.querySelector("#openLetter");
+  document.querySelector(".letter-button");
 
 const letterModal =
-  document.querySelector("#letterModal");
+  document.querySelector(".letter-modal");
 
 const closeLetter =
-  document.querySelector("#closeLetter");
+  document.querySelector(".close-letter");
 
 
-if (letterButton && letterModal) {
+function openLetter() {
 
-  letterButton.addEventListener("click", () => {
+  if (!letterModal) return;
 
-    letterModal.classList.remove("hidden");
+  letterModal.classList.remove("hidden");
 
-    document.body.style.overflow = "hidden";
-
-  });
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
-if (closeLetter && letterModal) {
+function closeLetterModal() {
 
-  closeLetter.addEventListener("click", () => {
+  if (!letterModal) return;
 
-    letterModal.classList.add("hidden");
+  letterModal.classList.add("hidden");
 
-    document.body.style.overflow = "";
+  document.body.style.overflow =
+    "";
 
-  });
+}
+
+
+if (letterButton) {
+
+  letterButton.addEventListener(
+    "click",
+    openLetter
+  );
+
+}
+
+
+if (closeLetter) {
+
+  closeLetter.addEventListener(
+    "click",
+    closeLetterModal
+  );
 
 }
 
 
 /* =========================================================
-   10. CLOSE MODAL WHEN CLICKING OUTSIDE
+   8. CLOSE LETTER WHEN CLICKING OUTSIDE
    ========================================================= */
 
 if (letterModal) {
 
-  letterModal.addEventListener("click", (event) => {
+  letterModal.addEventListener(
+    "click",
+    (event) => {
 
-    if (event.target === letterModal) {
+      if (
+        event.target === letterModal
+      ) {
 
-      letterModal.classList.add("hidden");
+        closeLetterModal();
 
-      document.body.style.overflow = "";
+      }
 
     }
-
-  });
+  );
 
 }
 
 
 /* =========================================================
-   11. ESCAPE TO CLOSE LETTER
+   9. ESC KEY FOR LETTER
    ========================================================= */
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener(
+  "keydown",
+  (event) => {
 
-  if (event.key === "Escape") {
+    if (event.key === "Escape") {
 
-    if (
-      letterModal &&
-      !letterModal.classList.contains("hidden")
-    ) {
-
-      letterModal.classList.add("hidden");
-
-      document.body.style.overflow = "";
+      closeLetterModal();
 
     }
 
   }
+);
+
+
+/* =========================================================
+   10. IMAGE FALLBACK
+   ========================================================= */
+
+const images =
+  document.querySelectorAll("img");
+
+
+images.forEach((image) => {
+
+  image.addEventListener(
+    "error",
+    () => {
+
+      image.style.display =
+        "none";
+
+      const parent =
+        image.parentElement;
+
+      if (!parent) return;
+
+      parent.classList.add(
+        "image-missing"
+      );
+
+    }
+  );
 
 });
 
 
 /* =========================================================
-   12. RANDOM POLKADOT FLOAT
+   11. GENTLE PARALLAX HOUSE
+   ========================================================= */
+
+const heroHouse =
+  document.querySelector(".hero-house");
+
+
+if (
+  heroHouse &&
+  window.innerWidth > 700
+) {
+
+  window.addEventListener(
+    "mousemove",
+    (event) => {
+
+      const x =
+        (event.clientX /
+          window.innerWidth -
+          0.5);
+
+      const y =
+        (event.clientY /
+          window.innerHeight -
+          0.5);
+
+      heroHouse.style.transform =
+        `translate(${x * 7}px, ${y * 5}px)`;
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   12. RANDOM POLKADOT FLOATERS
    ========================================================= */
 
 const dotLayer =
   document.querySelector(".dot-layer");
 
 
-if (dotLayer) {
+function createFloatingDot() {
 
-  for (let i = 0; i < 18; i++) {
+  if (!dotLayer) return;
 
-    const dot =
-      document.createElement("span");
+  const dot =
+    document.createElement("span");
 
-    dot.style.position = "fixed";
+  dot.style.position =
+    "fixed";
 
-    dot.style.width =
-      `${Math.floor(Math.random() * 9) + 5}px`;
+  dot.style.width =
+    `${Math.random() * 5 + 3}px`;
 
-    dot.style.height =
-      dot.style.width;
+  dot.style.height =
+    dot.style.width;
 
-    dot.style.borderRadius = "50%";
+  dot.style.borderRadius =
+    "50%";
 
-    dot.style.background =
-      "rgba(20, 44, 76, 0.10)";
+  dot.style.background =
+    "rgba(16, 42, 76, 0.16)";
 
-    dot.style.left =
-      `${Math.random() * 100}%`;
+  dot.style.left =
+    `${Math.random() * 100}vw`;
 
-    dot.style.top =
-      `${Math.random() * 100}%`;
+  dot.style.top =
+    `${Math.random() * 100}vh`;
 
-    dot.style.pointerEvents = "none";
+  dot.style.pointerEvents =
+    "none";
 
-    dot.style.animation =
-      `floatDot ${5 + Math.random() * 7}s ease-in-out infinite`;
+  dot.style.zIndex =
+    "-1";
 
-    dot.style.animationDelay =
-      `${Math.random() * 3}s`;
+  dot.style.transition =
+    "transform 5s ease-in-out, opacity 5s ease";
 
-    dotLayer.appendChild(dot);
-
-  }
-
-}
-
-
-/* =========================================================
-   13. FLOATING DOT ANIMATION
-   ========================================================= */
-
-const floatingStyle =
-  document.createElement("style");
-
-floatingStyle.textContent = `
-
-@keyframes floatDot {
-
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-
-}
-
-#teaMessage,
-#wishText,
-#flowerWish,
-#memoryOutput {
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-
-}
-
-`;
-
-document.head.appendChild(floatingStyle);
+  dotLayer.appendChild(dot);
 
 
-/* =========================================================
-   14. TYPEWRITER EFFECT
-   ========================================================= */
+  requestAnimationFrame(() => {
 
-const typewriter =
-  document.querySelector(".typewriter");
+    dot.style.transform =
+      `translate(
+        ${(Math.random() - 0.5) * 60}px,
+        ${(Math.random() - 0.5) * 60}px
+      )`;
 
-
-if (typewriter) {
-
-  const originalText =
-    typewriter.textContent.trim();
-
-  typewriter.textContent = "";
-
-  let character = 0;
-
-  function typeText() {
-
-    if (character < originalText.length) {
-
-      typewriter.textContent +=
-        originalText.charAt(character);
-
-      character++;
-
-      setTimeout(typeText, 45);
-
-    }
-
-  }
-
-  setTimeout(typeText, 500);
-
-}
-
-
-/* =========================================================
-   15. LITTLE HOUSE WELCOME
-   ========================================================= */
-
-const welcomeButton =
-  document.querySelector("#enterHouse");
-
-const livingRoom =
-  document.querySelector("#living");
-
-
-if (welcomeButton && livingRoom) {
-
-  welcomeButton.addEventListener("click", () => {
-
-    livingRoom.scrollIntoView({
-      behavior: "smooth"
-    });
+    dot.style.opacity =
+      "0";
 
   });
 
+
+  setTimeout(() => {
+
+    dot.remove();
+
+  }, 5000);
+
 }
 
 
+setInterval(
+  createFloatingDot,
+  1800
+);
+
+
 /* =========================================================
-   16. CURRENT YEAR
+   13. SMOOTH NAVIGATION
    ========================================================= */
 
-const yearElements =
-  document.querySelectorAll(".current-year");
+const navLinks =
+  document.querySelectorAll(
+    '.nav-links a[href^="#"]'
+  );
 
-yearElements.forEach((element) => {
 
-  element.textContent =
-    new Date().getFullYear();
+navLinks.forEach((link) => {
+
+  link.addEventListener(
+    "click",
+    (event) => {
+
+      const targetId =
+        link.getAttribute("href");
+
+      const target =
+        document.querySelector(
+          targetId
+        );
+
+      if (!target) return;
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+  );
 
 });
 
 
 /* =========================================================
-   17. CONSOLE MESSAGE
+   14. PAGE LOAD
    ========================================================= */
 
-console.log(
-  `
-  ┌─────────────────────────────────┐
-  │         RAYSHA'S HOUSE          │
-  │                                 │
-  │  take your time.                │
-  │  stay a little longer.          │
-  │  this house remembers.          │
-  └─────────────────────────────────┘
-  `
+window.addEventListener(
+  "load",
+  () => {
+
+    document.body.classList.add(
+      "page-loaded"
+    );
+
+    console.log(
+      "Welcome to Raysha's House."
+    );
+
+  }
 );
