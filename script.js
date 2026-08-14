@@ -1,262 +1,264 @@
-/* =========================================
-   1. MUSIC PLAYER
-========================================= */
+/* ==========================================
+   MUSIC
+========================================== */
 
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 
-let isPlaying = false;
+let playing = false;
 
 musicBtn.addEventListener("click", () => {
-  if (!isPlaying) {
+
+  if (!playing) {
+
     music.play();
+
     musicBtn.textContent = "Ⅱ";
-    isPlaying = true;
+
+    playing = true;
+
   } else {
+
     music.pause();
+
     musicBtn.textContent = "▶";
-    isPlaying = false;
+
+    playing = false;
+
   }
+
 });
 
 
-/* =========================================
-   2. JAR OF WISHES
-========================================= */
+/* ==========================================
+   WISH JAR
+========================================== */
 
 const wishButton = document.getElementById("wishButton");
 const wishDisplay = document.getElementById("wishDisplay");
 
+
 const wishes = [
+
   "May your ideas always find a place to grow.",
 
-  "May your future be bigger than your fears.",
+  "Semoga suatu hari nanti kamu sibuk mengejar mimpi yang dulu pernah terasa terlalu jauh.",
 
-  "I hope you never lose the curiosity that makes you keep learning.",
+  "May you never become too busy to read one more page.",
 
-  "May you build a life that feels as beautiful as the spaces you dream of creating.",
+  "Semoga tulisanmu terus menemukan jalan pulang kepada orang-orang yang membutuhkannya.",
 
-  "Semoga setiap langkah kecilmu selalu membawa kamu sedikit lebih dekat dengan apa yang kamu impikan.",
+  "I hope the future surprises you kindly.",
 
-  "Semoga nanti ada hari ketika kamu melihat semua yang telah kamu bangun and quietly think — I made it.",
+  "May you build a life that feels unmistakably yours.",
 
-  "May you meet people who believe in your dreams even on the days you don't.",
+  "Semoga setiap langkah kecilmu membawa kamu sedikit lebih dekat kepada versi dirimu yang kamu bayangkan.",
 
-  "Semoga tulisanmu terus menemukan pembacanya, dan mimpimu menemukan jalannya.",
+  "I hope you keep finding beautiful things in ordinary days.",
 
-  "May you always have a reason to keep creating.",
+  "May you always have something worth writing about.",
 
-  "Wherever life takes you, I hope you always remember that someone is quietly rooting for you."
+  "And on the days when everything feels uncertain, I hope you remember that you are still becoming.",
+
+  "Semoga nanti kamu melihat semua yang sudah kamu bangun lalu tersenyum kecil dan berpikir — ternyata aku sampai juga.",
+
+  "I hope life is gentle with the girl who dreams this much."
+
 ];
 
-let lastWish = -1;
+
+let previousWish = -1;
+
 
 wishButton.addEventListener("click", () => {
 
-  let randomWish;
+  let randomIndex;
 
   do {
-    randomWish = Math.floor(Math.random() * wishes.length);
-  } while (randomWish === lastWish);
 
-  lastWish = randomWish;
+    randomIndex =
+      Math.floor(Math.random() * wishes.length);
+
+  } while (randomIndex === previousWish);
+
+
+  previousWish = randomIndex;
+
 
   wishDisplay.style.opacity = "0";
-  wishDisplay.style.transform = "translateY(10px)";
+
+  wishDisplay.style.transform =
+    "translateY(10px)";
+
 
   setTimeout(() => {
 
-    wishDisplay.textContent = wishes[randomWish];
+    wishDisplay.textContent =
+      wishes[randomIndex];
 
     wishDisplay.style.opacity = "1";
-    wishDisplay.style.transform = "translateY(0)";
+
+    wishDisplay.style.transform =
+      "translateY(0)";
 
   }, 250);
 
 });
 
 
-/* =========================================
-   3. FUTURE LETTER
-========================================= */
+/* ==========================================
+   FUTURE LETTER
+========================================== */
 
-const envelope = document.getElementById("envelope");
-const letterButton = document.getElementById("letterButton");
+const envelope =
+  document.getElementById("envelope");
+
+const letterButton =
+  document.getElementById("letterButton");
+
 
 letterButton.addEventListener("click", () => {
 
   envelope.classList.toggle("open");
 
+
   if (envelope.classList.contains("open")) {
-    letterButton.textContent = "close the letter";
+
+    letterButton.textContent =
+      "close it";
+
   } else {
-    letterButton.textContent = "open the letter";
+
+    letterButton.textContent =
+      "open it";
+
   }
 
 });
 
 
-/* =========================================
-   4. QUOTE CAROUSEL
-========================================= */
+/* ==========================================
+   QUOTE CAROUSEL
+========================================== */
 
-const quotes = document.querySelectorAll(".quote");
+const quotes =
+  document.querySelectorAll(".quote");
+
 
 let currentQuote = 0;
 
+
 setInterval(() => {
 
-  quotes[currentQuote].classList.remove("active");
+  quotes[currentQuote]
+    .classList.remove("active");
+
 
   currentQuote++;
+
 
   if (currentQuote >= quotes.length) {
     currentQuote = 0;
   }
 
-  quotes[currentQuote].classList.add("active");
 
-}, 4500);
-
-
-/* =========================================
-   5. SCROLL REVEAL
-========================================= */
-
-const revealElements = document.querySelectorAll(
-  ".section, .dream-board, .blueprint, .ui-card, .word-card, .build-grid > div"
-);
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-
-    entries.forEach((entry) => {
-
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-
-    });
-
-  },
-  {
-    threshold: 0.12
-  }
-);
+  quotes[currentQuote]
+    .classList.add("active");
 
 
-revealElements.forEach((element) => {
-
-  element.classList.add("reveal");
-
-  revealObserver.observe(element);
-
-});
+}, 5000);
 
 
-/* =========================================
-   6. POLKADOT PARALLAX
-========================================= */
+/* ==========================================
+   POLKADOT PARALLAX
+========================================== */
 
-const polkas = document.querySelectorAll(".polka");
+const dots =
+  document.querySelectorAll(".dot");
+
 
 window.addEventListener("mousemove", (event) => {
 
   const x =
-    (event.clientX / window.innerWidth - 0.5) * 20;
+    (event.clientX / window.innerWidth - .5) * 15;
 
   const y =
-    (event.clientY / window.innerHeight - 0.5) * 20;
+    (event.clientY / window.innerHeight - .5) * 15;
 
-  polkas.forEach((polka, index) => {
 
-    const speed = (index + 1) * 0.35;
+  dots.forEach((dot, index) => {
 
-    polka.style.transform =
-      `translate(${x * speed}px, ${y * speed}px)`;
+    const speed =
+      (index + 1) * .25;
+
+
+    dot.style.transform =
+      `translate(
+        ${x * speed}px,
+        ${y * speed}px
+      )`;
 
   });
 
 });
 
 
-/* =========================================
-   7. BLUEPRINT ANIMATION
-========================================= */
+/* ==========================================
+   SCROLL REVEAL
+========================================== */
 
-const blueprint = document.querySelector(".blueprint");
+const sections =
+  document.querySelectorAll(".section");
 
-if (blueprint) {
 
-  const blueprintObserver = new IntersectionObserver(
+const observer =
+  new IntersectionObserver(
     (entries) => {
 
       entries.forEach((entry) => {
 
         if (entry.isIntersecting) {
-          blueprint.classList.add("blueprint-active");
+
+          entry.target.classList.add("show");
+
         }
 
       });
 
     },
     {
-      threshold: 0.25
+      threshold: .1
     }
   );
 
-  blueprintObserver.observe(blueprint);
 
-}
+sections.forEach((section) => {
 
+  section.classList.add("reveal");
 
-/* =========================================
-   8. IMAGE FALLBACK
-========================================= */
-
-const images = document.querySelectorAll("img");
-
-images.forEach((img) => {
-
-  img.addEventListener("error", () => {
-
-    img.style.display = "none";
-
-    if (img.parentElement) {
-      img.parentElement.classList.add("image-missing");
-    }
-
-  });
+  observer.observe(section);
 
 });
 
 
-/* =========================================
-   9. LITTLE CLICK EFFECT
-========================================= */
+/* ==========================================
+   IMAGE FALLBACK
+========================================== */
 
-document.addEventListener("click", (event) => {
+const images =
+  document.querySelectorAll("img");
 
-  const sparkle = document.createElement("span");
 
-  sparkle.textContent = "✦";
+images.forEach((image) => {
 
-  sparkle.style.position = "fixed";
-  sparkle.style.left = `${event.clientX}px`;
-  sparkle.style.top = `${event.clientY}px`;
+  image.addEventListener("error", () => {
 
-  sparkle.style.pointerEvents = "none";
-  sparkle.style.zIndex = "9999";
+    image.style.opacity = "0";
 
-  sparkle.style.fontSize = "14px";
-  sparkle.style.color = "#b86c65";
+    image.parentElement.classList.add(
+      "photo-missing"
+    );
 
-  sparkle.style.animation = "clickSparkle 0.7s ease forwards";
-
-  document.body.appendChild(sparkle);
-
-  setTimeout(() => {
-    sparkle.remove();
-  }, 700);
+  });
 
 });
