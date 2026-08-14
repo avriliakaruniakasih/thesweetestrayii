@@ -1,514 +1,226 @@
-/* =========================================
-   RUMAH RAYSHA — INTERACTION SCRIPT
-   ========================================= */
+```javascript
+/* =========================
+   LOADING SCREEN
+========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
 
-  /* ===============================
-     1. MUSIC PLAYER
-     =============================== */
+    setTimeout(() => {
 
-  const music = document.getElementById("backgroundMusic");
-  const musicButton = document.getElementById("musicButton");
-  const musicIcon = document.getElementById("musicIcon");
-  const musicText = document.getElementById("musicText");
+        document
+            .getElementById("loader")
+            .classList.add("hide");
 
-  let isPlaying = false;
+    }, 1000);
 
-  if (music && musicButton) {
-    musicButton.addEventListener("click", () => {
-
-      if (music.paused) {
-        music.play()
-          .then(() => {
-            isPlaying = true;
-
-            if (musicIcon) musicIcon.textContent = "Ⅱ";
-            if (musicText) musicText.textContent = "pause the music";
-            musicButton.classList.add("playing");
-          })
-          .catch(() => {
-            alert("Musiknya belum bisa diputar. Pastikan file music.mp3 ada di folder yang sama dengan index.html.");
-          });
-
-      } else {
-        music.pause();
-
-        isPlaying = false;
-
-        if (musicIcon) musicIcon.textContent = "▶";
-        if (musicText) musicText.textContent = "play our song";
-        musicButton.classList.remove("playing");
-      }
-
-    });
-  }
+});
 
 
-  /* ===============================
-     2. LAMP INTERACTION
-     =============================== */
+/* =========================
+   ROOM SYSTEM
+========================= */
 
-  const lamps = document.querySelectorAll(".lamp");
+const overlay = document.getElementById("roomOverlay");
 
-  lamps.forEach((lamp) => {
+const rooms = document.querySelectorAll(".room-content");
 
-    lamp.addEventListener("click", () => {
 
-      lamp.classList.toggle("lamp-on");
+function openRoom(roomId){
 
-      document.body.classList.toggle("warm-mode");
+    overlay.classList.add("show");
 
+    document.body.style.overflow = "hidden";
+
+    rooms.forEach(room => {
+        room.classList.remove("active");
     });
 
-  });
+    const selectedRoom = document.getElementById(roomId);
 
-
-  /* ===============================
-     3. SURAT DARI MASA DEPAN
-     =============================== */
-
-  const mailbox = document.getElementById("mailbox");
-  const letterModal = document.getElementById("letterModal");
-  const closeLetter = document.getElementById("closeLetter");
-
-  function openLetter() {
-    if (!letterModal) return;
-
-    letterModal.classList.add("show");
-    document.body.classList.add("modal-open");
-  }
-
-  function closeLetterBox() {
-    if (!letterModal) return;
-
-    letterModal.classList.remove("show");
-    document.body.classList.remove("modal-open");
-  }
-
-  if (mailbox) {
-
-    mailbox.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      openLetter();
-    });
-
-  }
-
-  if (closeLetter) {
-
-    closeLetter.addEventListener("click", (event) => {
-      event.preventDefault();
-      closeLetterBox();
-    });
-
-  }
-
-
-  /* Klik area luar surat untuk menutup */
-
-  if (letterModal) {
-
-    letterModal.addEventListener("click", (event) => {
-
-      if (event.target === letterModal) {
-        closeLetterBox();
-      }
-
-    });
-
-  }
-
-
-  /* ESC untuk menutup surat */
-
-  document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-      closeLetterBox();
+    if(selectedRoom){
+        selectedRoom.classList.add("active");
     }
 
-  });
+}
 
 
-  /* ===============================
-     4. FOTO LIGHTBOX
-     =============================== */
+function closeRoom(){
 
-  const photos = document.querySelectorAll(".memory-photo");
+    overlay.classList.remove("show");
 
-  photos.forEach((photo) => {
+    document.body.style.overflow = "auto";
 
-    photo.addEventListener("click", () => {
-
-      const src = photo.getAttribute("src");
-
-      if (!src) return;
-
-      const viewer = document.createElement("div");
-
-      viewer.className = "photo-viewer";
-
-      viewer.innerHTML = `
-        <div class="photo-viewer-inner">
-          <button class="photo-close">&times;</button>
-          <img src="${src}" alt="memory">
-        </div>
-      `;
-
-      document.body.appendChild(viewer);
-
-      requestAnimationFrame(() => {
-        viewer.classList.add("show");
-      });
-
-      const close = viewer.querySelector(".photo-close");
-
-      close.addEventListener("click", () => {
-        viewer.classList.remove("show");
-
-        setTimeout(() => {
-          viewer.remove();
-        }, 250);
-      });
-
-      viewer.addEventListener("click", (event) => {
-
-        if (event.target === viewer) {
-          viewer.classList.remove("show");
-
-          setTimeout(() => {
-            viewer.remove();
-          }, 250);
-        }
-
-      });
-
+    rooms.forEach(room => {
+        room.classList.remove("active");
     });
 
-  });
+}
 
 
-  /* ===============================
-     5. SMALL POLKA DOT FLOATING EFFECT
-     =============================== */
+/* Close when clicking outside content */
 
-  const dotContainer = document.querySelector(".floating-dots");
+overlay.addEventListener("click", function(event){
 
-  if (dotContainer) {
+    if(event.target === overlay){
+        closeRoom();
+    }
 
-    for (let i = 0; i < 18; i++) {
+});
 
-      const dot = document.createElement("span");
 
-      dot.classList.add("floating-dot");
+/* ESC KEY */
 
-      const size = Math.floor(Math.random() * 8) + 4;
+document.addEventListener("keydown", function(event){
 
-      dot.style.width = `${size}px`;
-      dot.style.height = `${size}px`;
+    if(event.key === "Escape"){
+        closeRoom();
+    }
 
-      dot.style.left = `${Math.random() * 100}%`;
-      dot.style.top = `${Math.random() * 100}%`;
+});
 
-      dot.style.animationDelay = `${Math.random() * 5}s`;
 
-      dotContainer.appendChild(dot);
+/* =========================
+   MUSIC
+========================= */
+
+const musicToggle =
+    document.getElementById("musicToggle");
+
+const audioPlayer =
+    document.getElementById("audioPlayer");
+
+
+let musicPlaying = false;
+
+
+musicToggle.addEventListener("click", () => {
+
+    if(!audioPlayer) return;
+
+    if(musicPlaying){
+
+        audioPlayer.pause();
+
+        musicPlaying = false;
+
+        musicToggle.innerHTML = "♫";
+
+    }else{
+
+        audioPlayer.play()
+            .then(() => {
+
+                musicPlaying = true;
+
+                musicToggle.innerHTML = "❚❚";
+
+            })
+            .catch(() => {
+
+                alert(
+                    "Open the Music Room and press play ♡"
+                );
+
+            });
 
     }
 
-  }
+});
 
 
-  /* ===============================
-     6. SCROLL REVEAL
-     =============================== */
+if(audioPlayer){
 
-  const revealElements = document.querySelectorAll(
-    ".room-card, .memory-card, .quote-card, .architecture-card, .future-note"
-  );
+    audioPlayer.addEventListener("play", () => {
 
-  const revealObserver = new IntersectionObserver(
+        musicPlaying = true;
+        musicToggle.innerHTML = "❚❚";
+
+    });
+
+
+    audioPlayer.addEventListener("pause", () => {
+
+        musicPlaying = false;
+        musicToggle.innerHTML = "♫";
+
+    });
+
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements = document.querySelectorAll(
+    ".room, .intro, .garden-quote, .final-note"
+);
+
+
+const observer = new IntersectionObserver(
     (entries) => {
 
-      entries.forEach((entry) => {
+        entries.forEach(entry => {
 
-        if (entry.isIntersecting) {
+            if(entry.isIntersecting){
 
-          entry.target.classList.add("revealed");
+                entry.target.style.opacity = "1";
 
-          revealObserver.unobserve(entry.target);
+                entry.target.style.transform =
+                    "translateY(0)";
 
-        }
+            }
 
-      });
+        });
 
     },
     {
-      threshold: 0.12
+        threshold:0.12
     }
-  );
+);
 
-  revealElements.forEach((element) => {
-    element.classList.add("reveal");
-    revealObserver.observe(element);
-  });
 
+revealElements.forEach(element => {
 
-  /* ===============================
-     7. NAVIGATION
-     =============================== */
+    element.style.opacity = "0";
 
-  const navLinks = document.querySelectorAll("[data-scroll]");
+    element.style.transform =
+        "translateY(25px)";
 
-  navLinks.forEach((link) => {
+    element.style.transition =
+        "opacity .8s ease, transform .8s ease";
 
-    link.addEventListener("click", (event) => {
-
-      event.preventDefault();
-
-      const targetID = link.getAttribute("data-scroll");
-      const target = document.getElementById(targetID);
-
-      if (target) {
-
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      }
-
-    });
-
-  });
-
-
-  /* ===============================
-     8. TEA NOTE
-     =============================== */
-
-  const teaNote = document.getElementById("teaNote");
-  const teaButton = document.getElementById("teaButton");
-
-  if (teaButton && teaNote) {
-
-    teaButton.addEventListener("click", () => {
-
-      teaNote.classList.toggle("open");
-
-      if (teaNote.classList.contains("open")) {
-        teaButton.textContent = "close the note";
-      } else {
-        teaButton.textContent = "read the note";
-      }
-
-    });
-
-  }
-
-
-  /* ===============================
-     9. ARCHITECTURE CARDS
-     =============================== */
-
-  const architectureCards =
-    document.querySelectorAll(".architecture-card");
-
-  architectureCards.forEach((card) => {
-
-    card.addEventListener("click", () => {
-
-      architectureCards.forEach((item) => {
-        item.classList.remove("selected");
-      });
-
-      card.classList.add("selected");
-
-    });
-
-  });
-
-
-  /* ===============================
-     10. WINDOW DAY/NIGHT EFFECT
-     =============================== */
-
-  const windowButton = document.getElementById("windowButton");
-
-  if (windowButton) {
-
-    windowButton.addEventListener("click", () => {
-
-      document.body.classList.toggle("night-mode");
-
-      const isNight =
-        document.body.classList.contains("night-mode");
-
-      windowButton.setAttribute(
-        "aria-label",
-        isNight ? "Switch to daytime" : "Switch to nighttime"
-      );
-
-    });
-
-  }
-
-
-  /* ===============================
-     11. TYPEWRITER EFFECT
-     =============================== */
-
-  const typewriter = document.querySelector(".typewriter");
-
-  if (typewriter) {
-
-    const originalText = typewriter.textContent;
-
-    typewriter.textContent = "";
-
-    let index = 0;
-
-    function typeText() {
-
-      if (index < originalText.length) {
-
-        typewriter.textContent += originalText.charAt(index);
-
-        index++;
-
-        setTimeout(typeText, 45);
-
-      }
-
-    }
-
-    setTimeout(typeText, 500);
-
-  }
-
-
-  /* ===============================
-     12. RANDOM LITTLE ROOM DETAILS
-     =============================== */
-
-  const tinyDetails = document.querySelectorAll(".tiny-detail");
-
-  tinyDetails.forEach((detail, index) => {
-
-    detail.style.animationDelay = `${index * 0.15}s`;
-
-  });
-
-
-  /* ===============================
-     13. MOBILE MENU
-     =============================== */
-
-  const menuButton = document.getElementById("menuButton");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  if (menuButton && mobileMenu) {
-
-    menuButton.addEventListener("click", () => {
-
-      mobileMenu.classList.toggle("open");
-
-      menuButton.classList.toggle("active");
-
-    });
-
-    const mobileLinks =
-      mobileMenu.querySelectorAll("a");
-
-    mobileLinks.forEach((link) => {
-
-      link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("open");
-        menuButton.classList.remove("active");
-
-      });
-
-    });
-
-  }
-
-
-  /* ===============================
-     14. MAKE SURE MAILBOX IS CLICKABLE
-     =============================== */
-
-  if (mailbox) {
-
-    mailbox.style.cursor = "pointer";
-
-    mailbox.setAttribute(
-      "role",
-      "button"
-    );
-
-    mailbox.setAttribute(
-      "tabindex",
-      "0"
-    );
-
-    mailbox.addEventListener("keydown", (event) => {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-        openLetter();
-
-      }
-
-    });
-
-  }
-
-
-  /* ===============================
-     15. LITTLE "HOME" FEELING
-     =============================== */
-
-  const homeObjects =
-    document.querySelectorAll(".home-object");
-
-  homeObjects.forEach((object) => {
-
-    object.addEventListener("mouseenter", () => {
-      object.classList.add("object-hover");
-    });
-
-    object.addEventListener("mouseleave", () => {
-      object.classList.remove("object-hover");
-    });
-
-  });
-
-
-  /* ===============================
-     16. CURRENT YEAR
-     =============================== */
-
-  const yearElements =
-    document.querySelectorAll("[data-year]");
-
-  yearElements.forEach((element) => {
-
-    element.textContent =
-      new Date().getFullYear();
-
-  });
-
-
-  console.log(
-    "Welcome home, Raysha."
-  );
+    observer.observe(element);
 
 });
+
+
+/* =========================
+   SMOOTH NAVIGATION
+========================= */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(link => {
+
+    link.addEventListener("click", function(event){
+
+        const target =
+            document.querySelector(
+                this.getAttribute("href")
+            );
+
+        if(target){
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        }
+
+    });
+
+});
+```
